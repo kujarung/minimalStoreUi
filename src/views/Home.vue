@@ -13,8 +13,19 @@
 
 <script>
 // @ is an alias to /src
+import minimalStoreApi from "@/api";
+import axios from "axios";
 
 export default {
+  async created (){ 
+    const {users} = await minimalStoreApi('get',"/users/select")
+    console.log(users)
+    const result = await axios({
+      method: 'get',
+      url: 'http://localhost:3000/users/select',
+    })
+    console.log(result)
+  },
   name: "Home",
   components: {}
 };
