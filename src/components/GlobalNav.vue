@@ -1,0 +1,26 @@
+<template>
+  <div>
+    <v-app-bar color="white" elevation="0" class="px30">
+      <v-toolbar-title class="font-weight-bold font20 mont">Minimal Store</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-btn icon>
+        <v-icon>mdi-magnify</v-icon>
+      </v-btn>
+      <!-- <div class="mx20">Login</div> -->
+      <v-avatar size="36">
+          <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
+        </v-avatar>
+    </v-app-bar>
+  </div>
+</template>
+
+<script>
+export default {
+  data: () => ({
+    drawer: false
+  })
+};
+</script>
+
+<style>
+</style>

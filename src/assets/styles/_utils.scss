@@ -1,0 +1,44 @@
+// margin padding 
+
+$max: 180;
+
+@mixin margin-classes {
+  @for $i from 1 through $max {
+     $margin: $i * 1px;
+    .ma#{$i}  {margin: $margin;}
+    .ml#{$i} {margin-left: $margin;}
+    .mr#{$i} {margin-right: $margin;}
+    .mt#{$i} {margin-top: $margin;}
+    .mb#{$i} {margin-bottom: $margin;}
+    .mx#{$i} {margin-left: $margin; margin-right: $margin;}
+    .my#{$i} {margin-top: $margin; margin-bottom: $margin;}
+  }
+}
+@include margin-classes;
+
+
+@mixin padding-classes {
+  @for $i from 1 through $max {
+    $padding: $i * 1px;
+    .pa#{$i} {padding: $padding;}
+    .pl#{$i} {padding-left: $padding;}
+    .pr#{$i} {padding-right: $padding;}
+    .pt#{$i} {padding-top: $padding;}
+    .pb#{$i} {padding-bottom: $padding;}
+    .px#{$i} {padding-left: $padding; padding-right: $padding;}
+    .py#{$i} {padding-top: $padding; padding-bottom: $padding;}
+  }
+}
+@include padding-classes;
+
+
+//font
+
+$max-font: 100;
+@mixin font-classes{
+  @for $i from 10 through $max-font{
+      $value: $i * 0.1rem !important;
+      .font#{$i} {font-size: $value;}
+  }
+}
+@include font-classes;

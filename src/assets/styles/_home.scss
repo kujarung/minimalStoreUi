@@ -1,0 +1,36 @@
+.home {
+    .main-block-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: 1fr 1fr 200px;
+        height:calc(100vh - #{$gnb});
+        .item {
+            padding: 40px;
+            transition: all .3s;
+            &:hover{
+                opacity:.8;
+            }
+        }
+        .item.first{
+            background-color:#F1D5CA;
+          
+        }
+        .item.second{
+            background-color:#F3EDE6;
+        }
+        .item.third{
+            grid-row: span 2;
+            background-color: #F1B57C;
+        }
+        .item.fourth{
+            grid-column: span 2;
+            background-color:#D8EFE1;
+        }
+        .item.end{
+            grid-column: span 3;
+            background-color:#000;
+        }
+    }
+
+  
+}

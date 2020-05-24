@@ -1,0 +1,67 @@
+@font-face {
+    font-family: 'NotoSansKR';
+    src:  url('../fonts/NotoSansKR-Light.otf') format('opentype');
+    font-weight: 300;
+    font-style: normal;
+  }
+@font-face {
+    font-family: 'NotoSansKR';
+    src:  url('../fonts/NotoSansKR-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+  }
+@font-face {
+    font-family: 'NotoSansKR';
+    src:  url('../fonts/NotoSansKR-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+@font-face {
+    font-family: 'NotoSansKR';
+    src:  url('../fonts/NotoSansKR-Bold.otf') format('opentype');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+@font-face {
+    font-family: 'Montserrat';
+    src:  url('../fonts/Montserrat-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+@font-face {
+    font-family: 'Montserrat';
+    src:  url('../fonts/Montserrat-Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+  }
+@font-face {
+    font-family: 'Montserrat';
+    src:  url('../fonts/Montserrat-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+  
+.mont{
+  font-family: 'Montserrat', sans-serif;;
+}
+
+// 1줄 ... 처리
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// 2줄 ... 처리
+.ellipsis2 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+		//필요에 따라 line-height를 써야할 수 있다.
+}
+
