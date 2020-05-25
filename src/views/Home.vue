@@ -24,7 +24,18 @@ export default {
       method: 'get',
       url: 'http://localhost:3000/users/select',
     })
-    console.log(result)
+    console.log(result.data)
+    this.userInfo = result.data.users[0]
+  },
+  data() {
+    return {
+      userInfo: {}
+    }
+  },
+  methods: {
+    name() {
+      
+    }
   },
   name: "Home",
   components: {}
