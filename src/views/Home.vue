@@ -30,7 +30,7 @@ export default {
   async created (){ 
     const {users} = await minimalStoreApi('get',"/users/select")
     console.log(users)
-    const {data :{ users} } = await axios(
+    const {data } = await axios(
       {
         method: 'get',
         url: 'http://localhost:3000/users/select',
@@ -39,8 +39,7 @@ export default {
           ccc : "ddd"
         }
       })
-    console.log(result)
-    this.userInfo = users
+    console.log(data)
   },
   data() {
     return {
