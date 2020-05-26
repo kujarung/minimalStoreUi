@@ -48,15 +48,29 @@
     <div class="" @click="selectAll">
       select(전체 검색)
     </div>
+    <div class="">
+      <div class="">
+        <input type="text" v-model="del_seq">
+      </div>
+      <div class="" @click="del">
+        delete(인풋에 쓰여진 user_seq 삭제)
+      </div>
+    </div>
     <div class="" @click="select">
-      select(user_seq가 1인값을 찾음)
+      select(user_seq가 3인값을 찾음)
     </div>    
+    <div class="">
+      <input v-model="update_val">
+      <div class="" @click="update">
+        update 3번 이름 변경
+      </div>
+    </div>        
     <br><br>
     <div class="">
       post
     </div>
     <div class="" @click="postSelect">
-      select(user_seq가 1인값을 찾음)
+      select(user_seq가 3인값을 찾음)
     </div>
   </div>
 </template>
@@ -79,6 +93,8 @@ export default {
         USER_SEX : "",
       },
       testArray : [],
+      del_seq : "",
+      update_val : "",
     }
   },
   async created() {
@@ -97,15 +113,52 @@ export default {
       })
       console.log(data)
     },
+
     async select() {
-
+      const data = await axios({
+        method: 'get',
+        url: 'http://localhost:3000/users/select',
+        params : {searchId : 3}
+      })
+      console.log(data)
     },
+
     async selectAll() {
-
+      const data = await axios({
+        method: 'get',
+        url: 'http://localhost:3000/users/selectAll',
+      })
+      console.log(data)
     },
-    async postSelect() {
 
-    }
+    async postSelect() {
+      const data = await axios({
+        method: 'post',
+        url: 'http://localhost:3000/users/postSelect',
+        data : {
+          searchId : 3,
+          searchName : "aaa"
+        }
+      })
+      console.log(data)
+    },
+
+    async del() {
+      const data = await axios({
+        method: 'get',
+        url: 'http://localhost:3000/users/del',
+        params : {searchId : this.del_seq}
+      })
+      console.log(data)
+    },
+    async update() {
+      const data = await axios({
+        method: 'get',
+        url: 'http://localhost:3000/users/update',
+        params : {update_val : this.update_val}
+      })
+      console.log(data)      
+    }    
   },
 }
 </script>
