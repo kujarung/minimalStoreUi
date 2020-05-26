@@ -28,18 +28,6 @@ import axios from "axios";
 
 export default {
   async created (){ 
-    const {users} = await minimalStoreApi('get',"/users/select")
-    console.log(users)
-    const {data } = await axios(
-      {
-        method: 'get',
-        url: 'http://localhost:3000/users/select',
-        data : {
-          aaa : "bbb",
-          ccc : "ddd"
-        }
-      })
-    console.log(data)
   },
   data() {
     return {
