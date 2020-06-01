@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="pl50 pr50">
     <div>
       <div class="">
         인설트를 위한 폼
@@ -72,6 +72,27 @@
     <div class="" @click="postSelect">
       select(user_seq가 3인값을 찾음)
     </div>
+    <form method="POST">
+      <div class="">
+        파일 업로드
+      </div>
+      <div class="mb50">
+        <form action="http://localhost:3000/product/upload" ref="formtest" method="post" enctype="multipart/form-data">
+          <img :src="imageUrl" height="150" v-if="imageUrl"/>
+          <v-text-field label="Select Image" @click='pickFile' v-model='imageName' class="my10"></v-text-field>
+          <input
+            name="img"
+            type="file"
+            style="display: none"
+            ref="image"
+            accept="image/*"
+            @change="onFilePicked"
+          >
+          <v-btn @click="uploadFile">파일 업로드</v-btn>
+        </form>
+
+      </div>
+    </form>
   </div>
 </template>
 
@@ -82,6 +103,9 @@ import axios from "axios";
 export default {
   data() {
     return {
+      imageName: '',
+      imageUrl: '',
+      imageFile: '',
       testObj: {
         USER_ID : "",
         USER_PASS : "",
@@ -153,12 +177,37 @@ export default {
     },
     async update() {
       const data = await axios({
-        method: 'get',
-        url: 'http://localhost:3000/users/update',
-        params : {update_val : this.update_val}
+        method: 'post',
+        url: 'http://localhost:3000/product/upload',
+        params : {update_val : this.update_val},
       })
       console.log(data)      
-    }    
+    }    ,
+    async uploadFile() {
+      this.$refs.formtest.submit();
+    },
+		onFilePicked (e) {
+			const files = e.target.files
+			if(files[0] !== undefined) {
+				this.imageName = files[0].name
+				if(this.imageName.lastIndexOf('.') <= 0) {
+					return
+				}
+				const fr = new FileReader ()
+				fr.readAsDataURL(files[0])
+				fr.addEventListener('load', () => {
+					this.imageUrl = fr.result
+					this.imageFile = files[0] // this is an image file that can be sent to server...
+				})
+			} else {
+				this.imageName = ''
+				this.imageFile = ''
+				this.imageUrl = ''
+			}
+    },
+    pickFile () {
+        this.$refs.image.click ()
+    },    
   },
 }
 </script>
