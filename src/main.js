@@ -7,6 +7,7 @@ import vuetify from './plugins/vuetify';
 import './assets/styles/main.scss';
 
 Vue.config.productionTip = false
+Vue.use(router);
 
 new Vue({
   router,

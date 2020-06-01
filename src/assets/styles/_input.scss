@@ -15,3 +15,18 @@ input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
     -webkit-text-fill-color: inherit !important;
 }
+
+// custom-input
+.v-input.custom-input.v-text-field{
+    .v-input__control{
+        .v-input__slot{
+            border-bottom:1px solid $border-grey;
+            border-radius: 0;
+            .v-text-field__slot{
+                input{
+                    border:0 !important;
+                }
+            }
+        }
+    }
+}

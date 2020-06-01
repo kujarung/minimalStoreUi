@@ -164,7 +164,7 @@ export default {
 </script>
 
 <style>
-  button, input, select, textarea {
+  /* button, input, select, textarea {
     border : 3px solid black !important;
-  }
+  } */
 </style>

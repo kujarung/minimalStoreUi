@@ -6,7 +6,10 @@
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
-      <!-- <div class="mx20">Login</div> -->
+      <div class="mx20">Login</div>
+      <div class="mr20">
+        <router-link to="signUp">Sign Up</router-link>
+      </div>
       <v-avatar size="36">
           <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
         </v-avatar>

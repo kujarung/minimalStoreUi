@@ -1,0 +1,20 @@
+.sign-up {
+    .sign-wrap {
+        padding-top:60px;
+        width: 430px;
+        margin: 0 auto;
+
+        .sign-title {
+            font-size: 1.8rem;
+            text-align: center;
+            font-weight: bold;
+            padding:24px 0;
+        }
+    }
+}
+
+.custom-pink-btn{
+    background-color: $basic !important;
+    border:0 !important;
+    border-radius: 6px;
+}
