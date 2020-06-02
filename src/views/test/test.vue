@@ -77,7 +77,7 @@
         파일 업로드
       </div>
       <div class="mb50">
-        <form action="http://localhost:3000/product/upload" ref="formtest" method="post" enctype="multipart/form-data">
+        <form action="http://localhost:8080/api/product/upload" ref="formtest" method="post" enctype="multipart/form-data">
           <img :src="imageUrl" height="150" v-if="imageUrl"/>
           <v-text-field label="Select Image" @click='pickFile' v-model='imageName' class="my10"></v-text-field>
           <input
@@ -97,7 +97,7 @@
 </template>
 
 <script>
-import minimalStoreApi from "@/api";
+import api from "@/api";
 import axios from "axios";
 
 export default {
@@ -122,7 +122,7 @@ export default {
     }
   },
   async created() {
-    // const test = await minimalStoreApi('get',"/users/select")
+    // const test = await api('get',"/users/select")
     // const data = await axios({
     //   method: 'get',
     //   url: 'http://localhost:3000/users/select',
@@ -130,57 +130,60 @@ export default {
   },
   methods: {
     async insert() {
-      const data = await axios({
-        method: 'get',
-        url: 'http://localhost:3000/users/insert',
-        params : this.testObj
-      })
+      const data = await api(
+        'get',
+        '/users/insert',
+        this.testObj
+      )
       console.log(data)
     },
 
     async select() {
-      const data = await axios({
-        method: 'get',
-        url: 'http://localhost:3000/users/select',
-        params : {searchId : 3}
-      })
+      const data = await api(
+        'get',
+        '/users/select',
+        {
+          searchId : 3, 
+          searchName : "aaa"
+        }
+      )
       console.log(data)
     },
 
     async selectAll() {
-      const data = await axios({
-        method: 'get',
-        url: 'http://localhost:3000/users/selectAll',
-      })
-      console.log(data)
+      const data = await api('get','/users/selectAll')
     },
 
     async postSelect() {
-      const data = await axios({
-        method: 'post',
-        url: 'http://localhost:3000/users/postSelect',
-        data : {
+      const result = await api(
+        'post', 
+        '/users/postSelect',
+        {
           searchId : 3,
           searchName : "aaa"
         }
-      })
-      console.log(data)
+      )
+      console.log(result)
     },
 
     async del() {
-      const data = await axios({
-        method: 'get',
-        url: 'http://localhost:3000/users/del',
-        params : {searchId : this.del_seq}
-      })
+      const data = await api(
+        'get',
+        '/users/del',
+        {
+          searchId : this.del_seq
+        }
+      )
       console.log(data)
     },
     async update() {
-      const data = await axios({
-        method: 'post',
-        url: 'http://localhost:3000/product/upload',
-        params : {update_val : this.update_val},
-      })
+      const data = await api(
+        'post',
+        '/product/upload',
+        {
+          update_val : this.update_val
+        },
+      )
       console.log(data)      
     }    ,
     async uploadFile() {
