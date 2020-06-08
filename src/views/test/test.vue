@@ -78,7 +78,8 @@
       </div>
       <div class="mb50">
         <form action="http://localhost:8080/api/product/upload" ref="formtest" method="post" enctype="multipart/form-data">
-          <img :src="imageUrl" height="150" v-if="imageUrl"/>
+          <!-- <img :src="imageUrl" height="150" v-if="imageUrl"/> -->
+          {{imageUrl}}
           <v-text-field label="Select Image" @click='pickFile' v-model='imageName' class="my10"></v-text-field>
           <input
             name="img"
@@ -87,6 +88,7 @@
             ref="image"
             accept="image/*"
             @change="onFilePicked"
+            multiple
           >
           <v-btn @click="uploadFile">파일 업로드</v-btn>
         </form>
@@ -103,6 +105,7 @@ import axios from "axios";
 export default {
   data() {
     return {
+      targetFile : "",
       imageName: '',
       imageUrl: '',
       imageFile: '',
@@ -190,22 +193,16 @@ export default {
       this.$refs.formtest.submit();
     },
 		onFilePicked (e) {
-			const files = e.target.files
-			if(files[0] !== undefined) {
-				this.imageName = files[0].name
-				if(this.imageName.lastIndexOf('.') <= 0) {
-					return
-				}
-				const fr = new FileReader ()
-				fr.readAsDataURL(files[0])
-				fr.addEventListener('load', () => {
-					this.imageUrl = fr.result
-					this.imageFile = files[0] // this is an image file that can be sent to server...
-				})
-			} else {
-				this.imageName = ''
-				this.imageFile = ''
-				this.imageUrl = ''
+      const files = e.target.files
+      console.log(files)
+			if(files.length > 0) {
+        const fr = new FileReader ()
+        console.log(fr)
+				fr.readAsDataURL(files)
+				// fr.addEventListener('load', () => {
+				// 	this.imageUrl = fr.result
+				// 	this.targetFile = files // this is an image file that can be sent to server...
+				// })
 			}
     },
     pickFile () {
