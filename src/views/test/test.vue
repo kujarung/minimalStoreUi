@@ -77,7 +77,7 @@
         파일 업로드
       </div>
       <div class="mb50">
-        <form action="http://localhost:8080/api/product/upload" ref="formtest" method="post" enctype="multipart/form-data">
+        <form :action=formUrl ref="formtest" method="post" enctype="multipart/form-data">
           <img :src="imageUrl" height="150" v-if="imageUrl"/>
           <v-text-field label="Select Image" @click='pickFile' v-model='imageName' class="my10"></v-text-field>
           <input
@@ -90,17 +90,31 @@
           >
           <v-btn @click="uploadFile">파일 업로드</v-btn>
         </form>
-
       </div>
     </form>
+    <div class="" v-if="listData">
+      <div class="" v-for="(data,index) in listData" :key="index">
+        <div class="" v-for="(img, imgIndex) in data.ATTACH_IMGs" :key="imgIndex">
+          <img :src="path + img.file_path" alt="">
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import api from "@/api";
 import axios from "axios";
+import common from "@/mixin"
 
 export default {
+  computed: {
+    formUrl() {
+      console.log(`${this.path}api/product/upload`)
+      return `${this.path}api/product/upload`
+    }
+  },
+  mixins: [common],
   data() {
     return {
       imageName: '',
@@ -119,16 +133,31 @@ export default {
       testArray : [],
       del_seq : "",
       update_val : "",
+      listData : []
     }
   },
   async created() {
-    // const test = await api('get',"/users/select")
-    // const data = await axios({
-    //   method: 'get',
-    //   url: 'http://localhost:3000/users/select',
-    // })
+    const {product} = await api(
+      'get',
+      '/product',
+    )
+    this.listData = product
   },
   methods: {
+    async insertProduct(code) {
+      const data = await api(
+        'get',
+        '/product/insert',
+        {
+          product_code : code,
+          product_name : "ryan",
+          product_desc : "ㅎㅎ",
+          product_price : "1000",
+          reg_date : new Date(),
+        }
+      )
+    },
+
     async insert() {
       const data = await api(
         'get',
@@ -176,6 +205,7 @@ export default {
       )
       console.log(data)
     },
+
     async update() {
       const data = await api(
         'post',
