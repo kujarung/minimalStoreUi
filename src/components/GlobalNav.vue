@@ -2,6 +2,7 @@
   <div>
     <v-app-bar color="white" elevation="0" class="px30">
       <v-toolbar-title class="font-weight-bold font20 mont">Minimal Store</v-toolbar-title>
+      <div class="ml32 mont mt6"> Store</div>
       <v-spacer></v-spacer>
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>

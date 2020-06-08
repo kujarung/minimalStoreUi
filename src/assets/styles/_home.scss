@@ -1,43 +1,88 @@
 .home {
-    .main-header {
-        background-color: $basic;
-        height: 460px;
-        padding-left: 50px;
-        display: flex;
-        align-items: center;
+    .v-carousel__controls {
+        background: transparent;
 
-        ul {
+        .v-item-group {
+            position: absolute;
+            right: 46px;
+        }
 
-            list-style: none;
-            padding: 0;
+        .v-carousel__controls__item.v-btn {
+            background-color: rgba(0, 0, 0, .2);
+            width: 8px;
+            height: 8px;
+            border-radius: 0;
+            right: 0;
 
-            li {
-                display: flex;
-                font-size: 42px;
-                font-family: 'Montserrat';
-                font-weight: 700;
-                cursor: pointer;
-                transition: all .3s;
+            &.v-item--active {
+                background-color: rgba(0, 0, 0, .4);
+            }
 
-                &:hover {
-                    background-color: $basicPink;
-                    padding: 0 30px;
+            i {
+                &::before {
+                    content: '';
                 }
             }
         }
-       
+        
     }
-    .main-copy{
-        font-size:80px;
-        font-weight:bold;
-        padding-left:50px;
-        line-height:1.2;
+    .v-window__prev{
+        display:none;
+    }
+    .v-window__next{
+        margin:0 48px;
+    }
+
+    .main-header {
+        // background-color: $basic;
+        // height: 460px;
+        // padding-left: 50px;
+        // display: flex;
+        // align-items: center;
         position: relative;
-        top:-60px;
+
+        .slider-on-list {
+            position: absolute;
+            top:20%;
+            padding-left:48px;
+            ul {
+                list-style: none;
+                padding: 0;
+
+                li {
+                    display: flex;
+                    font-size: 42px;
+                    font-family: 'Montserrat';
+                    font-weight: 700;
+                    cursor: pointer;
+                    transition: all .3s;
+
+                    &:hover {
+                        background-color: $basicPink;
+                        padding: 0 30px;
+                    }
+                }
+            }
+
+        }
     }
-    .sub-copy{
-        font-size:30px;
-        text-align:right;
-        padding-right:50px;
+
+    .main-copy {
+        font-size: 80px;
+        font-weight: bold;
+        padding-left: 50px;
+        line-height: 1.2;
+        position: relative;
+        margin-top: -60px;
     }
+.sub-wrap{
+    position: relative;
+    .sub-copy {
+        font-size: 30px;
+        text-align: left;
+        position: absolute;
+        left:60%;
+        padding-right: 50px;
+    }
+}
 }
