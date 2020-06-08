@@ -1,5 +1,5 @@
 import axios from "axios";
-const DOMAIN = process.env.NODE_ENV === "development" ? "http://localhost:8000/api" : '/api';
+const DOMAIN = process.env.NODE_ENV === "development" ? "http://localhost:8080/api" : '/api';
 
 const api = async (method, url, data) => {
   console.log(process.env.NODE_ENV )

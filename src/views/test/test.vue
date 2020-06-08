@@ -198,11 +198,9 @@ export default {
 			if(files.length > 0) {
         const fr = new FileReader ()
         console.log(fr)
-				fr.readAsDataURL(files)
-				// fr.addEventListener('load', () => {
-				// 	this.imageUrl = fr.result
-				// 	this.targetFile = files // this is an image file that can be sent to server...
-				// })
+				fr.addEventListener('load', () => {
+					this.targetFile = files // this is an image file that can be sent to server...
+				})
 			}
     },
     pickFile () {
