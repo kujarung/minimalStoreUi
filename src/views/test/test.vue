@@ -110,7 +110,8 @@ import common from "@/mixin"
 export default {
   computed: {
     formUrl() {
-      return `${this.path}/api/product/upload`
+      console.log(`${this.path}api/product/upload`)
+      return `${this.path}api/product/upload`
     }
   },
   mixins: [common],
