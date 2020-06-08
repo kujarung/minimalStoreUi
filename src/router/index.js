@@ -13,7 +13,7 @@ Vue.use(VueRouter)
       component: Home
     },
     {
-      path: '/test',
+      path: '/example',
       name: 'Test',
       component: Test
     },    
