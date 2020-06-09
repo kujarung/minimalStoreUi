@@ -1,9 +1,10 @@
 import axios from "axios";
 const DOMAIN = process.env.NODE_ENV === "development" ? "http://localhost:8080/api" : '/api';
 
-const api = async (method, url, data) => {
+const api = async (method, url, data, header) => {
   console.log(process.env.NODE_ENV )
   if(method === "get") {
+    console.log(data)
     const res = await axios({
       method,
       url: DOMAIN + url,
@@ -14,7 +15,8 @@ const api = async (method, url, data) => {
     const res = await axios({
       method,
       url: DOMAIN + url,
-      data
+      data,
+      header
     });
     return res.data;
   }

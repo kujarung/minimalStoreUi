@@ -22,8 +22,8 @@
         </div>
         <div class="">
           <v-select
+            v-model="insertObj.product_address_code"
             :items="locationItems"
-            label="Standard"
           ></v-select>
         </div>
       </div>
@@ -34,8 +34,10 @@
         </div>
         <div class="">
           <v-select
+            v-model="insertObj.product_cate"
             :items="cateItems"
-            label="Standard"
+            item-text="cate_label"
+            item-value="cate_code"
           ></v-select>
         </div>
       </div>
@@ -54,7 +56,7 @@
           상품 가격
         </div>
         <div class="">
-          <v-text-field label="Main input" :rules="rules" hide-details="auto" v-model="insertObj.product_price"></v-text-field>
+          <v-text-field type="number" label="Main input" :rules="rules" hide-details="auto" v-model="insertObj.product_price"></v-text-field>
         </div>
       </div>        
 
@@ -99,7 +101,6 @@
 
 <script>
 import api from '@/api'
-import axios from 'axios'
 
 export default {
   watch : {
@@ -107,25 +108,29 @@ export default {
       this.urlList = val.slice()
     }
   },
-  created() {
-    this.cateItems = []
+  async created() {
+    const cate = await api('get', '/product/cate')
+    console.log(cate)
+    this.cateItems = cate
   },
   data() {
     return {
       valid: false,
       imageName : "",
-      locationItems : [],
+      locationItems : ['서울', '부산', '인천', '대구', '대전', '광주', '수원', '울산', '포항', '의정부', '김포', '성남', '청주', '부천', '전주', '진주', '제주'],
       cateItems : [],
       rules: [
         value => !!value || 'Required.',
       ],
       insertObj : {
+        product_code : new Date().getTime() + "-" + Math.ceil(Math.random() * 10),
         product_name : "",
         product_desc : "",
         product_price : "",
         product_cate : "",
-        product_address : "",
+        product_address_code : "",
         del_is_free : false,
+        reg_date : new Date()
       },
       attachFile : [],
       urlList : [],
@@ -150,18 +155,17 @@ export default {
     pickFile () {
         this.$refs.image.click ()
     },    
+
+    // 프로덕트 인서트
     async saveProduct() {
-      const frm = new FormData()
-      console.log(this.attachFile)
-      this.attachFile.forEach( file => {
-        frm.append('img', file)
-      })
-      await axios.post('http://localhost:8080/api/product/upload', frm, 
-      {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      })      
+      const frm = new FormData();
+      for(let i=0;i<this.attachFile.length;i++) {
+        frm.append('img', this.attachFile[i])
+      }
+      frm.append('code', this.insertObj.product_code)
+      const headers = {'Content-Type': 'multipart/form-data'};
+      const result = await api('get', '/product/insert', {...this.insertObj});
+      await api('post','/product/upload', frm, headers);
     }
   },
 }

@@ -11,7 +11,9 @@
           무엇이든 판매해보세요.
         </div>
         <div class="visual-reg-txt">
-          상품 등록하기
+          <router-link to="/product/reg">
+            상품 등록하기
+          </router-link>
         </div>
       </div>
     </v-sheet>
@@ -20,7 +22,7 @@
         <v-col cols="12">
           <tab @changeTab="changeTab"/>
           <v-row no-gutters class="product-con">
-            <ProductItem v-for="n in 10" :key="n"/>
+            <ProductItem v-for="(product, index) in productList" :key="index" :product="product"/>
           </v-row>
         </v-col>
       </v-row>
@@ -33,7 +35,13 @@ import ProductItem from './components/ProductItem'
 import VisualSwiper from '@/components/VisualSwiper'
 import tab from './components/ProductTab'
 import ProductCate from './components/ProductCate'
+import api from '@/api'
+
 export default {
+  async created() {
+    const { data } = await api('get','/product');
+    this.productList = data
+  },
   components: {
     ProductItem,
     VisualSwiper,
@@ -42,6 +50,7 @@ export default {
   },
   data() {
     return {
+      productList : [],
       slides: [
         require("@/assets/images/back-img1.png"),
         require("@/assets/images/back-img2.png"),
