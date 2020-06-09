@@ -1,11 +1,12 @@
 <template>
   <div>
     <v-app-bar color="white" elevation="0" class="px30">
-      <v-toolbar-title class="font-weight-bold font20 mont">
+       <v-toolbar-title class="font-weight-bold font20 mont">
         <router-link to="/">
           Minimal Store
         </router-link>
       </v-toolbar-title>
+      <div class="ml32 mont mt6"> Store</div>
       <v-spacer></v-spacer>
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
