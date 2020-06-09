@@ -79,7 +79,6 @@
       <div class="mb50">
         <form action="http://localhost:8080/api/product/upload" ref="formtest" method="post" enctype="multipart/form-data">
           <!-- <img :src="imageUrl" height="150" v-if="imageUrl"/> -->
-          {{imageUrl}}
           <v-text-field label="Select Image" @click='pickFile' v-model='imageName' class="my10"></v-text-field>
           <input
             name="img"
@@ -125,11 +124,6 @@ export default {
     }
   },
   async created() {
-    // const test = await api('get',"/users/select")
-    // const data = await axios({
-    //   method: 'get',
-    //   url: 'http://localhost:3000/users/select',
-    // })
   },
   methods: {
     async insert() {
@@ -194,10 +188,8 @@ export default {
     },
 		onFilePicked (e) {
       const files = e.target.files
-      console.log(files)
 			if(files.length > 0) {
         const fr = new FileReader ()
-        console.log(fr)
 				fr.addEventListener('load', () => {
 					this.targetFile = files // this is an image file that can be sent to server...
 				})
