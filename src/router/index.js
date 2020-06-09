@@ -4,6 +4,10 @@ import Home from '@/views/Home'
 import Test from '@/views/test/test'
 import SignUp from '@/views/login/SignUp'
 
+import ProductList from '@/views/product/ProductList'
+import ProductDetail from '@/views/product/ProductDetail'
+import ProductReg from '@/views/product/ProductReg'
+
 Vue.use(VueRouter)
 
   const routes = [
@@ -22,6 +26,19 @@ Vue.use(VueRouter)
       name: 'signUp',
       component: SignUp
     },    
+    {
+      path : '/product',
+      component : ProductList,
+    },
+    {
+      path: '/product/detail/:productCode',
+      component: ProductDetail,
+      props : true
+    },            
+    {
+      path : '/product/reg',
+      component : ProductReg,
+    },
   ]
 
 const router = new VueRouter({

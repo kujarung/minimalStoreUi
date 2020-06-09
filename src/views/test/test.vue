@@ -77,8 +77,8 @@
         파일 업로드
       </div>
       <div class="mb50">
-        <form :action=formUrl ref="formtest" method="post" enctype="multipart/form-data">
-          <img :src="imageUrl" height="150" v-if="imageUrl"/>
+        <form action="http://localhost:8080/api/product/upload" ref="formtest" method="post" enctype="multipart/form-data">
+          <!-- <img :src="imageUrl" height="150" v-if="imageUrl"/> -->
           <v-text-field label="Select Image" @click='pickFile' v-model='imageName' class="my10"></v-text-field>
           <input
             name="img"
@@ -87,36 +87,24 @@
             ref="image"
             accept="image/*"
             @change="onFilePicked"
+            multiple
           >
           <v-btn @click="uploadFile">파일 업로드</v-btn>
         </form>
+
       </div>
     </form>
-    <div class="" v-if="listData">
-      <div class="" v-for="(data,index) in listData" :key="index">
-        <div class="" v-for="(img, imgIndex) in data.ATTACH_IMGs" :key="imgIndex">
-          <img :src="path + img.file_path" alt="">
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
 import api from "@/api";
 import axios from "axios";
-import common from "@/mixin"
 
 export default {
-  computed: {
-    formUrl() {
-      console.log(`${this.path}api/product/upload`)
-      return `${this.path}api/product/upload`
-    }
-  },
-  mixins: [common],
   data() {
     return {
+      targetFile : "",
       imageName: '',
       imageUrl: '',
       imageFile: '',
@@ -133,31 +121,11 @@ export default {
       testArray : [],
       del_seq : "",
       update_val : "",
-      listData : []
     }
   },
   async created() {
-    const {product} = await api(
-      'get',
-      '/product',
-    )
-    this.listData = product
   },
   methods: {
-    async insertProduct(code) {
-      const data = await api(
-        'get',
-        '/product/insert',
-        {
-          product_code : code,
-          product_name : "ryan",
-          product_desc : "ㅎㅎ",
-          product_price : "1000",
-          reg_date : new Date(),
-        }
-      )
-    },
-
     async insert() {
       const data = await api(
         'get',
@@ -205,7 +173,6 @@ export default {
       )
       console.log(data)
     },
-
     async update() {
       const data = await api(
         'post',
@@ -220,22 +187,12 @@ export default {
       this.$refs.formtest.submit();
     },
 		onFilePicked (e) {
-			const files = e.target.files
-			if(files[0] !== undefined) {
-				this.imageName = files[0].name
-				if(this.imageName.lastIndexOf('.') <= 0) {
-					return
-				}
-				const fr = new FileReader ()
-				fr.readAsDataURL(files[0])
+      const files = e.target.files
+			if(files.length > 0) {
+        const fr = new FileReader ()
 				fr.addEventListener('load', () => {
-					this.imageUrl = fr.result
-					this.imageFile = files[0] // this is an image file that can be sent to server...
+					this.targetFile = files // this is an image file that can be sent to server...
 				})
-			} else {
-				this.imageName = ''
-				this.imageFile = ''
-				this.imageUrl = ''
 			}
     },
     pickFile () {
