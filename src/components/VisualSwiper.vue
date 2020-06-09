@@ -7,10 +7,10 @@
     </swiper-slide>
     <div class="swiper-pagination" slot="pagination"></div>
     <div class="swiper-button-prev pointer" slot="button-prev">
-      <v-img src="@/assets/img/left.svg" />
+      <v-img src="@/assets/images/left.svg" />
     </div>
     <div class="swiper-button-next pointer" slot="button-next">
-      <v-img src="@/assets/img/right.svg" />
+      <v-img src="@/assets/images/right.svg" />
     </div>
   </swiper>
 </template>
@@ -30,6 +30,9 @@ export default {
   data() {
     return {
       swiperOption: {
+        autoplay: {
+          delay: 5000,
+        },
         slidesPerView: 1,
         spaceBetween: 0,
         loop: false,

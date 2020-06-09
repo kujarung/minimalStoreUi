@@ -7,9 +7,11 @@
     <v-card class="inner-card" outlined>
       <v-sheet class="product-img-con">
         <v-sheet class="product-star">
-          <v-img src="@/assets/img/star-active.svg"/>
+          <v-img src="@/assets/images/star-active.svg"/>
         </v-sheet>
-        <v-img class="product-img" src="./20200609_135733.png" contain/>
+        <v-sheet height="300" color="transparent">
+          <v-img class="product-img" src="@/assets/images/20200609_182933.png"/>
+        </v-sheet>
         <v-sheet class="product-desc-con">
           <v-sheet class="label-text-con free-del">
             <span class="label-text">
