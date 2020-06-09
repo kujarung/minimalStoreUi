@@ -6,7 +6,7 @@
         <v-text-field
           solo
           flat
-          v-model="userObj.USER_NAME"
+          v-model="userObj.user_name"
           :rules="nameRules"
           placeholder="이름"
           class="custom-input"
@@ -14,7 +14,7 @@
         <v-text-field
           solo
           flat
-          v-model="userObj.USER_ID"
+          v-model="userObj.user_id"
           :rules="idRules"
           placeholder="아이디"
           class="custom-input"
@@ -26,7 +26,7 @@
         <v-text-field
           solo
           flat
-          v-model="userObj.USER_PASSWORD"
+          v-model="userObj.user_password"
           :rules="passwordRules"
           placeholder="비밀번호"
           class="custom-input"
@@ -34,7 +34,7 @@
         <v-text-field
           solo
           flat
-          v-model="userObj.USER_PASSWORD_CHECK"
+          v-model="checkPassword"
           placeholder="비밀번호 확인"
           :rules="checkPasswordRules"
           class="custom-input"
@@ -42,7 +42,7 @@
         <v-text-field
           solo
           flat
-          v-model="userObj.USER_PHONE"
+          v-model="userObj.user_phone"
           type="number"
           placeholder="휴대전화"
           class="custom-input"
@@ -50,9 +50,17 @@
         <v-text-field
           solo
           flat
-          v-model="userObj.USER_EMAIL"
+          v-model="userObj.user_email"
           :rules="emailRules"
           placeholder="이메일"
+          class="custom-input"
+        ></v-text-field>
+        <v-text-field
+          solo
+          flat
+          v-model="userObj.user_address"
+          :rules="addressRules"
+          placeholder="주소를 입력해주세요"
           class="custom-input"
         ></v-text-field>
         <v-btn
@@ -75,13 +83,14 @@ import axios from "axios";
 export default {
   data() {
     return {
+      checkPassword:'',
       userObj: {
-        USER_NAME: "",
-        USER_ID: "",
-        USER_PASSWORD: "",
-        USER_PASSWORD_CHECK: "",
-        USER_PHONE: "",
-        USER_EMAIL: ""
+        user_name: "",
+        user_id: "",
+        user_password: "",
+        user_phone: "",
+        user_email: "",
+        user_address:"",
       },
       valid: false,
       isDuplicateOK: false,
@@ -107,8 +116,12 @@ export default {
       checkPasswordRules: [
         v => !!v || "비밀번호 확인을 입력해주세요",
         v =>
-          this.password === this.checkPassword ||
+          this.userObj.user_password === this.checkPassword ||
           "비밀번호가 일치하지 않습니다."
+      ],
+      addressRules:[
+        v => !!v || "주소를 입력해주세요",
+        v => (v && v.length <= 30) || "제한길이 30자"
       ]
     };
   },
@@ -138,40 +151,28 @@ export default {
     async insert() {
       if (this.valid && this.isDuplicateOK) {
         try {
-          const data = await axios({
-            method: "get",
-            url: "http://localhost:3000/signUp/insert",
-            params: this.userObj
-          }).then(res => {
-            console.log("res::", res);
-            console.log("insert!");
-            this.$router.push("/");
-          });
+          const data = await api("get", "/signUp/insert", this.userObj);
+          console.log("data::", data);
+          this.$router.push("/");
         } catch (e) {
-          console.log(error);
+          console.log(e);
         }
       } else if (!this.isDuplicateOK) {
         alert("아이디 중복확인을 해주세요.");
       }
     },
     async select() {
-      if (this.userObj.USER_ID) {
+      if (this.userObj.user_id) {
         try {
-          const searchId = this.userObj.USER_ID;
-          await axios({
-            method: "get",
-            url: "http://localhost:3000/signUp/select",
-            params: { userId: searchId }
-          }).then(res => {
-            console.log("res", res.data);
-            if (res.data.length == 0) {
-              this.isDuplicateOK = true;
-              alert("사용 가능한 아이디입니다");
-            } else {
-              alert("아이디가 이미 있습니다");
-              this.isDuplicateOK = false;
-            }
-          });
+          const searchId = this.userObj.user_id;
+          const data = await api("get", "/signUp/select", { userId: searchId });
+          if (data.length == 0) {
+            this.isDuplicateOK = true;
+            alert("사용 가능한 아이디입니다");
+          } else {
+            alert("아이디가 이미 있습니다");
+            this.isDuplicateOK = false;
+          }
           console.log("이것 찾았음", searchId);
         } catch (e) {
           console.log("error::", e);
@@ -186,7 +187,7 @@ export default {
         url: "http://localhost:3000/signUp/selectAll"
       });
       console.log(data);
-    },
+    }
   }
 };
 </script>
