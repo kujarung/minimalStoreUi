@@ -47,7 +47,7 @@
           상품 설명
         </div>
         <div class="">
-          <v-text-field label="Main input" :rules="rules" hide-details="auto" v-model="insertObj.product_desc"></v-text-field>
+          <editor @saveDesc="saveDesc"/>
         </div>
       </div>   
 
@@ -104,6 +104,9 @@ import api from '@/api'
 import editor from './components/TxtEditor'
 
 export default {
+  components: {
+    editor,
+  },
   watch : {
     showList(val) {
       this.urlList = val.slice()
@@ -168,14 +171,11 @@ export default {
       const headers = {'Content-Type': 'multipart/form-data'};
       const result = await api('get', '/product/insert', {...this.insertObj});
       await api('post','/product/upload', frm, headers);
-    }
+    },
+
+    saveDesc(val) {
+      this.insertObj.product_desc = val
+    }    
   },
 }
 </script>
-
-<style scoped>
-.bak-img{
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-</style>

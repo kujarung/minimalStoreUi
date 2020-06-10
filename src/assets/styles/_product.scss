@@ -180,6 +180,40 @@
   }
 }
 
+
+.custom__editor__content {
+  &.edit {
+    .ProseMirror { 
+      border: 1px solid #CFCFCF;
+      background-color: #fff;
+    }
+  }
+
+  .ProseMirror {
+    border: none;
+    background-color: #F6F6F6;
+    box-sizing: border-box;
+    border-radius: 20px;
+    min-height: 200px;
+    padding:20px;
+    width: 100%;
+    outline: none;
+    resize: none;;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    caret-color: #222222;    
+    outline: none;
+    min-height: 400px;
+  }
+  .menubar {
+    line-height: 10px;;
+  }
+}
+
+
+// 모바일
 @media (max-width: 769px) {
   .visual-con {
     .v-image__image--contain {

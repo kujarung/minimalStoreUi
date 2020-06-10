@@ -9,7 +9,7 @@
         <v-img src="@/assets/images/star-active.svg" v-if="starStatus"/>
         <v-img src="@/assets/images/star.svg" v-else/>
       </v-sheet>
-      <router-link :to="`/product/detail/${prdData.product_code}`">
+      <div @click="goDetail">
         <v-sheet class="product-img-con">
           <v-sheet height="300" color="transparent">
             <v-img class="product-img" 
@@ -33,13 +33,13 @@
             </v-sheet>
           </v-sheet>
         </v-sheet>
-      </router-link>        
+      </div>        
       <v-sheet class="text-con">
         <v-sheet class="product-title">
           {{prdData.product_name}}
         </v-sheet>
         <v-sheet class="product-desc">
-          {{prdData.product_desc}}
+          {{prdData.product_desc.replace(/(<([^>]+)>)/ig,"")}}
         </v-sheet>
         <v-sheet class="product-price">
           {{prdData.product_price}}원
@@ -70,6 +70,10 @@ export default {
     activeStar(code) {
       this.starStatus = !this.starStatus
       console.log(code)
+    },
+    goDetail() {
+      this.$store.commit("setScrollY",{posY : window.scrollY})
+      this.$router.push(`/product/detail/${this.prdData.product_code}`)
     }
   },
 }

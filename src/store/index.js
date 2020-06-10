@@ -9,7 +9,8 @@ export default new Vuex.Store({
       count: 0,
     },
     product : {
-      currentPage : 1
+      currentPage : 1,
+      scrollY : 0,
     }
   },
   getters: {
@@ -39,14 +40,20 @@ export default new Vuex.Store({
     addLoading(state) {
       state.loading.count += 1
     },
+
     removeLoading(state) {
       if (state.loading.count > 0) {
         state.loading.count -= 1
       }
     },
+
     addPage(state) {
       ++state.product.currentPage
-    }
+    },
+    
+    setScrollY(state, {posY}) {
+      state.product.scrollY = posY
+    }    
   },
   
   modules: {

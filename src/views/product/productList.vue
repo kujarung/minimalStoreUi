@@ -46,9 +46,23 @@ export default {
     }
   },
   async created() {
-    const {data, lastPage} = await api('get','/product');  
-    this.lastPage = lastPage;
-    this.productList.push(...data);
+    if(this.productObj.currentPage !== 1) {
+      for(let i=1;i<this.productObj.currentPage + 1;i++) {
+        const {data, lastPage} = await api('get','/product', {currentPage : i} );  
+        this.productList.push(...data);
+        this.lastPage = lastPage;
+      }
+      console.log(this.productObj.scrollY)
+      window.scrollTo({
+        top: this.productObj.scrollY,
+        left: 0,
+        behavior: 'smooth'
+      })
+    } else {
+      const {data, lastPage} = await api('get','/product');  
+      this.lastPage = lastPage;
+      this.productList.push(...data);
+    }
     window.addEventListener("scroll", ()=> this.addItem())
   },
   beforeDestroy() {
