@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="sub-wrap">
     <v-sheet class="visual-con">
       <VisualSwiper :slides="slides" class="mb67"/>
       <div class="cate-wrap">
@@ -36,9 +36,15 @@ import VisualSwiper from '@/components/VisualSwiper'
 import tab from './components/ProductTab'
 import ProductCate from './components/ProductCate'
 import api from '@/api'
+import common from "@/mixin"
 
 export default {
+  mixins : [common],
+  beforeDestroy() {
+    window.removeEventListener("scroll", ()=> this.addItem())
+  },  
   async created() {
+    window.addEventListener("scroll", ()=> this.addItem())
     const { data } = await api('get','/product');
     this.productList = data
   },
@@ -63,8 +69,47 @@ export default {
     },
     changeCate(code) {
       console.log(code)
-    }
+    },
+    addItem() {
+      if(getCurrentScrollPercentage() > 90 && this.productList.length < 12) {
+        let plusItem = {
+          createdAt: "2020-06-09T16:29:24.000Z",
+          del_is_free: "true",
+          deletedAt: null,
+          product_address_code: "서울",
+          product_cate: "com",
+          product_code: "1591720150710-4",
+          product_desc: "ㅊㅌ퓿튜",
+          product_name: "ㄴㄹㅎㅇㅎ",
+          product_price: 234234,
+          reg_date: "2020-06-09T16:29:10.000Z",
+          updatedAt: "2020-06-10T02:48:33.000Z",
+          view: 3,
+          ATTACH_IMGs: [
+            {
+              file_name: "201812_type1_2880.jpg",
+              file_path: "/upload/product/temp1.png",
+              file_seq: 50,
+              product_code: "1591720150710-4",
+              upload_date: "2020-06-09T16:29:24.000Z",
+            }
+          ]
+        }
+        this.productList.push(plusItem)
+        plusItem.ATTACH_IMGs.file_path = "/upload/product/temp2.png"
+        this.productList.push(plusItem)
+        console.log(plusItem)
+        plusItem.ATTACH_IMGs.file_path = "/upload/product/temp3.png"
+        this.productList.push(plusItem)
+        plusItem.ATTACH_IMGs.file_path = "/upload/product/temp4.png"
+        this.productList.push(plusItem)
+      }
+    }    
   },
+}
+
+function getCurrentScrollPercentage(){
+  return (window.scrollY + window.innerHeight) / document.body.clientHeight * 100
 }
 </script>
 
