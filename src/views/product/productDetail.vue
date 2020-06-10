@@ -45,7 +45,7 @@ export default {
     productCode : String
   }, 
   async created() {
-    const data = await api('get', `/product/detail/${this.productCode}`)
+    const {data : {data}} = await api('get', `/product/detail/${this.productCode}`)
     this.detailData = {...data[0]}
   },
   data() {

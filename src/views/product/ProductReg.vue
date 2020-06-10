@@ -113,9 +113,8 @@ export default {
     }
   },
   async created() {
-    const cate = await api('get', '/product/cate')
-    console.log(cate)
-    this.cateItems = cate
+    const {data} = await api('get', '/product/cate')
+    this.cateItems = data
   },
   data() {
     return {
@@ -169,7 +168,7 @@ export default {
       }
       frm.append('code', this.insertObj.product_code)
       const headers = {'Content-Type': 'multipart/form-data'}; 
-      const result = await api('get', '/product/insert', {...this.insertObj});
+      // const result = await api('get', '/product/insert', {...this.insertObj});
       await api('post','/product/upload', frm, headers);
     },
 

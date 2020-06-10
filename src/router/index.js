@@ -1,12 +1,12 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '@/views/Home'
-import Test from '@/views/test/test'
-import SignUp from '@/views/login/SignUp'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '@/views/Home';
+import Test from '@/views/test/test';
+import SignUp from '@/views/login/SignUp';
 
-import ProductList from '@/views/product/ProductList'
-import ProductDetail from '@/views/product/ProductDetail'
-import ProductReg from '@/views/product/ProductReg'
+import ProductList from '@/views/product/ProductList';
+import ProductDetail from '@/views/product/ProductDetail';
+import ProductReg from '@/views/product/ProductReg';
 
 Vue.use(VueRouter)
 
