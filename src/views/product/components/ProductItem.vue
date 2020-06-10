@@ -12,7 +12,12 @@
       <router-link :to="`/product/detail/${prdData.product_code}`">
         <v-sheet class="product-img-con">
           <v-sheet height="300" color="transparent">
-            <v-img class="product-img" :src="path + prdData.ATTACH_IMGs[0].file_path" v-if="prdData.ATTACH_IMGs.length > 0"/>
+            <v-img class="product-img" 
+              min-height="300"
+              max-height="300"
+              :src="path + prdData.ATTACH_IMGs[0].file_path" v-if="prdData.ATTACH_IMGs.length > 0"
+            />
+            <!-- 이미지가 없을 시 기본 디폴트 이미지 -->
             <v-img class="product-img" src="@/assets/images/20200609_182933.png" v-else/>
           </v-sheet>
           <v-sheet class="product-desc-con">

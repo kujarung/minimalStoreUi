@@ -1,5 +1,5 @@
 <template>
-  <div class="sub-wrap">
+  <div class="sub-main">
     <v-sheet class="visual-con">
       <VisualSwiper :slides="slides" class="mb67"/>
       <div class="cate-wrap">
@@ -40,14 +40,20 @@ import common from "@/mixin"
 
 export default {
   mixins : [common],
+  computed : {
+    productObj() {
+      return this.$store.getters.product
+    }
+  },
+  async created() {
+    const {data, lastPage} = await api('get','/product');  
+    this.lastPage = lastPage;
+    this.productList.push(...data);
+    window.addEventListener("scroll", ()=> this.addItem())
+  },
   beforeDestroy() {
     window.removeEventListener("scroll", ()=> this.addItem())
   },  
-  async created() {
-    window.addEventListener("scroll", ()=> this.addItem())
-    const { data } = await api('get','/product');
-    this.productList = data
-  },
   components: {
     ProductItem,
     VisualSwiper,
@@ -56,6 +62,7 @@ export default {
   },
   data() {
     return {
+      lastPage : 0,
       productList : [],
       slides: [
         require("@/assets/images/back-img1.png"),
@@ -70,39 +77,11 @@ export default {
     changeCate(code) {
       console.log(code)
     },
-    addItem() {
-      if(getCurrentScrollPercentage() > 90 && this.productList.length < 12) {
-        let plusItem = {
-          createdAt: "2020-06-09T16:29:24.000Z",
-          del_is_free: "true",
-          deletedAt: null,
-          product_address_code: "서울",
-          product_cate: "com",
-          product_code: "1591720150710-4",
-          product_desc: "ㅊㅌ퓿튜",
-          product_name: "ㄴㄹㅎㅇㅎ",
-          product_price: 234234,
-          reg_date: "2020-06-09T16:29:10.000Z",
-          updatedAt: "2020-06-10T02:48:33.000Z",
-          view: 3,
-          ATTACH_IMGs: [
-            {
-              file_name: "201812_type1_2880.jpg",
-              file_path: "/upload/product/temp1.png",
-              file_seq: 50,
-              product_code: "1591720150710-4",
-              upload_date: "2020-06-09T16:29:24.000Z",
-            }
-          ]
-        }
-        this.productList.push(plusItem)
-        plusItem.ATTACH_IMGs.file_path = "/upload/product/temp2.png"
-        this.productList.push(plusItem)
-        console.log(plusItem)
-        plusItem.ATTACH_IMGs.file_path = "/upload/product/temp3.png"
-        this.productList.push(plusItem)
-        plusItem.ATTACH_IMGs.file_path = "/upload/product/temp4.png"
-        this.productList.push(plusItem)
+    async addItem() {
+      if(getCurrentScrollPercentage() > 90 && (this.productObj.currentPage < this.lastPage) ) {
+        this.$store.commit('addPage');
+        const { data } = await api('get','/product',{currentPage : this.productObj.currentPage});
+        this.productList.push(...data)
       }
     }    
   },

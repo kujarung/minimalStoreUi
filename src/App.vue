@@ -8,19 +8,22 @@
 
 <script>
 import GlobalNav from "@/components/GlobalNav";
-import Loading from './components/Loading';
+import Loading from '@/components/Loading';
 
 export default {
+  computed : {
+    visibleLoading() {
+      return this.$store.getters.loading.count > 0
+    }
+  },
   name: "App",
   components: {
-    GlobalNav
+    GlobalNav,
+    Loading
   },
 
   data: () => ({
     // 로딩바 표시 여부
-    visibleLoading() {
-      return this.$store.getters.loading.count > 0
-    },
     //
   })
 };

@@ -8,7 +8,7 @@ import './assets/styles/main.scss';
 
 Vue.config.productionTip = false
 Vue.use(router);
-
+Vue.use(store);
 new Vue({
   router,
   store,

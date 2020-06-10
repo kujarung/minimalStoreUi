@@ -101,6 +101,7 @@
 
 <script>
 import api from '@/api'
+import editor from './components/TxtEditor'
 
 export default {
   watch : {
@@ -123,7 +124,7 @@ export default {
         value => !!value || 'Required.',
       ],
       insertObj : {
-        product_code : new Date().getTime() + "-" + Math.ceil(Math.random() * 10),
+        product_code : "",
         product_name : "",
         product_desc : "",
         product_price : "",
@@ -158,6 +159,7 @@ export default {
 
     // 프로덕트 인서트
     async saveProduct() {
+      this.insertObj['product_code'] = new Date().getTime() + "-" + Math.ceil(Math.random() * 10)
       const frm = new FormData();
       for(let i=0;i<this.attachFile.length;i++) {
         frm.append('img', this.attachFile[i])

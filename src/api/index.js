@@ -1,24 +1,34 @@
 import axios from "axios";
+import store from "@/store"
 const DOMAIN = process.env.NODE_ENV === "development" ? "http://localhost:8080/api" : '/api';
 
 const api = async (method, url, data, header) => {
-  console.log(process.env.NODE_ENV )
+  store.commit("addLoading")
   if(method === "get") {
-    console.log(data)
-    const res = await axios({
-      method,
-      url: DOMAIN + url,
-      params : data
-    });
-    return res.data;
+    try {
+      const res = await axios({
+        method,
+        url: DOMAIN + url,
+        params : data
+      });
+      store.commit("removeLoading");
+      return res.data;
+    } catch(error) {
+      store.commit("removeLoading")
+    }
   } else {
-    const res = await axios({
-      method,
-      url: DOMAIN + url,
-      data,
-      header
-    });
-    return res.data;
+    try {
+      const res = await axios({
+        method,
+        url: DOMAIN + url,
+        data,
+        header
+      });
+      store.commit("removeLoading")
+      return res.data;
+    } catch(error) {
+      store.commit("removeLoading")
+    }
   }
 };
 
