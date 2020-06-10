@@ -6,20 +6,21 @@
     margin-bottom: 32px;
     margin-left: 16px;
     margin-right: 16px;
+    position: relative;
+  }
+  .product-star {
+    cursor: pointer;
+    position: absolute;
+    right : 16px;
+    top: 16px;
+    z-index: 10;
+    background-color: transparent;
   }
   .product-img-con {
     position: relative;
     background-color: transparent;
     .product-img {
       border-radius: 12px;
-    }
-    .product-star {
-      cursor: pointer;
-      position: absolute;
-      right : 16px;
-      top: 16px;
-      z-index: 10;
-      background-color: transparent;
     }
     .product-desc-con {
       display: flex;
@@ -33,15 +34,23 @@
   .text-con {
     padding-bottom: 13px;
     padding-left: 16px;
+    padding-right: 16px;
+    background-color: transparent;
     .product-title {
       font-size: 16px;
       font-weight: bold;
       margin-bottom: 2px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     .product-desc {
       font-size: 12px;
       color: $border-grey;
       margin-bottom: 4px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
     .product-price {
       font-size: 18px;
