@@ -1,12 +1,14 @@
 <template>
   <div>
     <div class="">
-      <div class="" v-if="detailData.ATTACH_IMGs.length > 0">
-        <v-img 
+      <div class="" >
+        <VisualSwiper v-if="detailData.ATTACH_IMGs.length > 1" :slides="detailData.ATTACH_IMGs.map(val => this.path + val.file_path)"/>
+        <v-img
+          v-else 
           v-for="(img, index) in detailData.ATTACH_IMGs" 
           :key="index"
           :src="path + img.file_path"
-        />
+        />        
       </div>
       <div class="">
         <div class="title">
@@ -27,13 +29,16 @@
 </template>
 
 <script>
-import api from '@/api'
-import common from "@/mixin"
-import editor from './components/TxtEditor'
+import api from '@/api';
+import common from "@/mixin";
+import editor from './components/TxtEditor';
+import VisualSwiper from '@/components/VisualSwiper';
 
 export default {
+  mixins : [common],
   components: {
     editor,
+    VisualSwiper
   },
   mixins : [common],
   props : {

@@ -168,7 +168,7 @@ export default {
         frm.append('img', this.attachFile[i])
       }
       frm.append('code', this.insertObj.product_code)
-      const headers = {'Content-Type': 'multipart/form-data'};
+      const headers = {'Content-Type': 'multipart/form-data'}; 
       const result = await api('get', '/product/insert', {...this.insertObj});
       await api('post','/product/upload', frm, headers);
     },

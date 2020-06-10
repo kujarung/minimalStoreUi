@@ -173,7 +173,7 @@
       font-weight: bold;
     }
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.05);
       transition: 0.2s;
       font-weight: bold;
     }
@@ -218,6 +218,7 @@
   .visual-con {
     .v-image__image--contain {
       background-size: cover;
+      background-position: bottom !important;
     }
   }
 	.sub-con {
@@ -231,15 +232,20 @@
       line-height: 33px;
     }
   }
-  .cate-con {
-    padding: 10px 20px;
-    .cate-item {
-      font-size: 15px;
-      line-height: 24px;
-      color: #000000;
-      margin-right: 20px;
+  .cate-wrap {
+    bottom: -20px;
+    .cate-con {
+      bottom: 50px;
+      padding: 5px 10px;
+      .cate-item {
+        font-size: 12px;
+        line-height: 24px;
+        color: #000000;
+        margin-right: 20px;
+      }
     }
   }
+
   .swiper-button-prev, .swiper-button-next {
     width: 24px;
   }

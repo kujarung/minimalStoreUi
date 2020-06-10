@@ -52,9 +52,8 @@ export default {
         this.productList.push(...data);
         this.lastPage = lastPage;
       }
-      console.log(this.productObj.scrollY)
       window.scrollTo({
-        top: this.productObj.scrollY,
+        top: this.productObj.scrollY + 400,
         left: 0,
         behavior: 'smooth'
       })
