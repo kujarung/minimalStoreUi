@@ -18,7 +18,7 @@
               :src="path + prdData.ATTACH_IMGs[0].file_path" v-if="prdData.ATTACH_IMGs.length > 0"
             />
             <!-- 이미지가 없을 시 기본 디폴트 이미지 -->
-            <v-img class="product-img" src="@/assets/images/20200609_182933.png" v-else/>
+            <v-img class="product-img" src="@/assets/images/default.png" v-else/>
           </v-sheet>
           <v-sheet class="product-desc-con">
             <v-sheet class="label-text-con free-del" v-if="prdData.del_is_free === 'true'">

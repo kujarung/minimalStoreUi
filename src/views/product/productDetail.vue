@@ -13,11 +13,11 @@
           {{detailData.product_name}}
         </div>
         <div class="title">
-          {{detailData.product_desc}}
-        </div>        
+          <editor @saveDesc="saveDesc" :editVal="detailData.product_desc" :editMode="`detail`"/>
+        </div>
         <div class="title">
           {{detailData.product_price}}
-        </div>
+        </div>               
       </div>
       <div class="">
 
@@ -29,8 +29,12 @@
 <script>
 import api from '@/api'
 import common from "@/mixin"
+import editor from './components/TxtEditor'
 
 export default {
+  components: {
+    editor,
+  },
   mixins : [common],
   props : {
     productCode : String
