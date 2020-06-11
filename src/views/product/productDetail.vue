@@ -1,10 +1,11 @@
 <template>
   <div>
     <div class="">
-      <div class="" >
-        <VisualSwiper v-if="detailData.ATTACH_IMGs.length > 1" :slides="detailData.ATTACH_IMGs.map(val => this.path + val.file_path)"/>
+      <div class="" v-if="renderOk">
+        <VisualSwiper v-if="detailData.ATTACH_IMGs.length > 1" 
+          :slides="detailData.ATTACH_IMGs.map(val => this.path + val.file_path)"/>
         <v-img
-          v-else 
+          v-else
           v-for="(img, index) in detailData.ATTACH_IMGs" 
           :key="index"
           :src="path + img.file_path"
@@ -15,7 +16,7 @@
           {{detailData.product_name}}
         </div>
         <div class="title">
-          <editor @saveDesc="saveDesc" :editVal="detailData.product_desc" :editMode="`detail`"/>
+          <editor :editVal="detailData.product_desc" :editMode="`detail`"/>
         </div>
         <div class="title">
           {{detailData.product_price}}
@@ -45,11 +46,13 @@ export default {
     productCode : String
   }, 
   async created() {
-    const {data : {data}} = await api('get', `/product/detail/${this.productCode}`)
+    const {data} = await api('get', `/product/detail/${this.productCode}`)
     this.detailData = {...data[0]}
+    this.renderOk = true
   },
   data() {
     return {
+      renderOk : false,
       detailData: {}
     }
   },

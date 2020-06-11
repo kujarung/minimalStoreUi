@@ -7,6 +7,8 @@ import SignUp from '@/views/login/SignUp';
 import ProductList from '@/views/product/ProductList';
 import ProductDetail from '@/views/product/ProductDetail';
 import ProductReg from '@/views/product/ProductReg';
+import Oauth from "@/views/login/Oauth"
+import Login from "@/views/login/Login"
 
 Vue.use(VueRouter)
 
@@ -25,7 +27,17 @@ Vue.use(VueRouter)
       path: '/signUp',
       name: 'signUp',
       component: SignUp
+    },
+    {
+      path: '/oauth',
+      name: 'oauth',
+      component: Oauth
     },    
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },                
     {
       path : '/product',
       component : ProductList,
