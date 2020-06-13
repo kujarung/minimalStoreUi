@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home'
 import Test from '@/views/test/test'
+import About from '@/views/about/About';
+import Oauth from "@/views/user/Oauth"
 
 import userRouter from '@/router/modules/user'
 import productRouter from '@/router/modules/product'
@@ -14,6 +16,16 @@ const routes = [
     name: 'Home',
     component: Home
   },
+  {
+    path: '/about',
+    name: 'About',
+    component: About
+  },
+  {
+    path: '/oauth',
+    name: 'oauth',
+    component: Oauth
+  },     
   {
     path: '/example',
     name: 'Test',

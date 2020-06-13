@@ -14,12 +14,12 @@
       <div class="mx20">
         <router-link to="/productList">상품 리스트</router-link>
       </div>
+      <div class="mr20">
+        <router-link to="/about">About</router-link>
+      </div>
       <div class="mx20">
         <router-link to="/login">Login</router-link>
       </div>
-      <div class="mr20">
-        <router-link to="/about">about</router-link>
-      </div>      
       <div class="mr20">
         <router-link to="/signUp">Sign Up</router-link>
       </div>
