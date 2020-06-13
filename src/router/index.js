@@ -3,7 +3,8 @@ import VueRouter from 'vue-router'
 
 import Home from '@/views/Home'
 import Test from '@/views/test/test'
-import About from '@/views/about/About';
+import About from '@/views/about/About'
+import UserLayout from '@/views/user/UserLayout'
 
 import userRouter from '@/router/modules/user'
 import productRouter from '@/router/modules/product'
@@ -26,12 +27,17 @@ const routes = [
     name: 'Test',
     component: Test
   },
+  {
+    path: '/user',
+    component: UserLayout,
+    children: userRouter,
+  },
 ]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [...routes, ...userRouter, ...productRouter]
+  routes: [...routes, ...productRouter]
 })
 
 export default router

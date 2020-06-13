@@ -18,10 +18,10 @@
         <router-link to="/productList">상품 리스트</router-link>
       </div>
       <div class="mx20">
-        <router-link to="/login">Login</router-link>
+        <router-link to="/user/login">Login</router-link>
       </div>
       <div class="mr20">
-        <router-link to="/signUp">Sign Up</router-link>
+        <router-link to="/user/signUp">Sign Up</router-link>
       </div>
       <v-avatar size="36">
           <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />

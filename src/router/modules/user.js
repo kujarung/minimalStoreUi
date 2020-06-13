@@ -1,19 +1,19 @@
-import SignUp from '@/views/user/SignUp'
-import Login from '@/views/user/Login'
-import Oauth from '@/views/user/Oauth'
+import SignUp from '@/views/user/components/SignUp'
+import Login from '@/views/user/components/Login'
+import Oauth from '@/views/user/components/Oauth'
 const userRouter = [
     {
-        path: '/signUp',
+        path: 'signUp',
         name: 'signUp',
         component: SignUp
     },
     {
-        path: '/login',
+        path: 'login',
         name: 'login',
         component: Login
     },
     {
-        path: '/oauth',
+        path: 'oauth',
         name: 'oauth',
         component: Oauth
       },     
