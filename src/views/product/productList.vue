@@ -40,6 +40,12 @@ import common from "@/mixin"
 
 export default {
   mixins : [common],
+  components: {
+    ProductItem,
+    VisualSwiper,
+    tab,
+    ProductCate
+  },  
   computed : {
     productObj() {
       return this.$store.getters.product
@@ -48,7 +54,7 @@ export default {
   async created() {
     if(this.productObj.currentPage !== 1) {
       for(let i=1;i<this.productObj.currentPage + 1;i++) {
-        const {data, lastPage} = await api('get','/product', {currentPage : i} );  
+        const {data : {data, lastPage}} = await api('get','/product', {currentPage : i} );  
         this.productList.push(...data);
         this.lastPage = lastPage;
       }
@@ -58,7 +64,7 @@ export default {
         behavior: 'smooth'
       })
     } else {
-      const {data, lastPage} = await api('get','/product');  
+      const { data : {data, lastPage} } = await api('get','/product');  
       this.lastPage = lastPage;
       this.productList.push(...data);
     }
@@ -67,12 +73,6 @@ export default {
   beforeDestroy() {
     window.removeEventListener("scroll", ()=> this.addItem())
   },  
-  components: {
-    ProductItem,
-    VisualSwiper,
-    tab,
-    ProductCate
-  },
   data() {
     return {
       lastPage : 0,
@@ -91,9 +91,13 @@ export default {
       console.log(code)
     },
     async addItem() {
-      if(getCurrentScrollPercentage() > 90 && (this.productObj.currentPage < this.lastPage) ) {
+      if(getCurrentScrollPercentage() > 90 
+          && 
+        (this.productObj.currentPage < this.lastPage) 
+        ) 
+      {
         this.$store.commit('addPage');
-        const { data } = await api('get','/product',{currentPage : this.productObj.currentPage});
+        const {data : {data}} = await api('get','/product',{currentPage : this.productObj.currentPage});
         this.productList.push(...data)
       }
     }    
@@ -104,7 +108,3 @@ function getCurrentScrollPercentage(){
   return (window.scrollY + window.innerHeight) / document.body.clientHeight * 100
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

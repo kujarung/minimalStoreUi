@@ -1,12 +1,15 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '@/views/Home'
-import Test from '@/views/test/test'
-import SignUp from '@/views/login/SignUp'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '@/views/Home';
+import Test from '@/views/test/test';
+import SignUp from '@/views/login/SignUp';
 
-import ProductList from '@/views/product/ProductList'
-import ProductDetail from '@/views/product/ProductDetail'
-import ProductReg from '@/views/product/ProductReg'
+import ProductList from '@/views/product/ProductList';
+import ProductDetail from '@/views/product/ProductDetail';
+import About from '@/views/about/About';
+import ProductReg from '@/views/product/ProductReg';
+import Oauth from "@/views/login/Oauth"
+import Login from "@/views/login/Login"
 
 Vue.use(VueRouter)
 
@@ -17,6 +20,11 @@ Vue.use(VueRouter)
       component: Home
     },
     {
+      path: '/about',
+      name: 'About',
+      component: About
+    },    
+    {
       path: '/example',
       name: 'Test',
       component: Test
@@ -25,7 +33,17 @@ Vue.use(VueRouter)
       path: '/signUp',
       name: 'signUp',
       component: SignUp
+    },
+    {
+      path: '/oauth',
+      name: 'oauth',
+      component: Oauth
     },    
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
+    },                
     {
       path : '/product',
       component : ProductList,
