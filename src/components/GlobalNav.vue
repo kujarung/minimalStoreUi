@@ -16,6 +16,9 @@
         <router-link to="/product">상품 리스트</router-link>
       </div>
       <div class="mr20">
+        <router-link to="/about">about</router-link>
+      </div>      
+      <div class="mr20">
         <router-link to="/signUp">Sign Up</router-link>
       </div>
       <v-avatar size="36">

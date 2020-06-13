@@ -6,6 +6,7 @@ import SignUp from '@/views/login/SignUp';
 
 import ProductList from '@/views/product/ProductList';
 import ProductDetail from '@/views/product/ProductDetail';
+import About from '@/views/about/About';
 import ProductReg from '@/views/product/ProductReg';
 import Oauth from "@/views/login/Oauth"
 import Login from "@/views/login/Login"
@@ -18,6 +19,11 @@ Vue.use(VueRouter)
       name: 'Home',
       component: Home
     },
+    {
+      path: '/about',
+      name: 'About',
+      component: About
+    },    
     {
       path: '/example',
       name: 'Test',
