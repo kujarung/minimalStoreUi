@@ -1,5 +1,6 @@
 import SignUp from '@/views/user/SignUp'
 import Login from '@/views/user/Login'
+import Oauth from '@/views/user/Oauth'
 const userRouter = [
     {
         path: '/signUp',
@@ -11,6 +12,11 @@ const userRouter = [
         name: 'login',
         component: Login
     },
+    {
+        path: '/oauth',
+        name: 'oauth',
+        component: Oauth
+      },     
 ]
 
 export default userRouter

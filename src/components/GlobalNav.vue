@@ -11,11 +11,11 @@
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
-      <div class="mx20">
-        <router-link to="/productList">상품 리스트</router-link>
-      </div>
       <div class="mr20">
         <router-link to="/about">About</router-link>
+      </div>
+      <div class="mx20">
+        <router-link to="/productList">상품 리스트</router-link>
       </div>
       <div class="mx20">
         <router-link to="/login">Login</router-link>
