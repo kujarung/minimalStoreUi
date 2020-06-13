@@ -39,10 +39,11 @@
           {{prdData.product_name}}
         </v-sheet>
         <v-sheet class="product-desc">
+          <!-- html 지우는 정규식 -->
           {{prdData.product_desc.replace(/(<([^>]+)>)/ig,"")}}
         </v-sheet>
         <v-sheet class="product-price">
-          {{prdData.product_price}}원
+          {{ numberWithCommas(prdData.product_price) }}원
         </v-sheet> 
       </v-sheet>
     </v-card>

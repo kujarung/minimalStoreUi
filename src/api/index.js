@@ -12,7 +12,7 @@ const api = async (method, url, data, header) => {
         params : data
       });
       store.commit("removeLoading");
-      return res.data;
+      return res;
     } catch(error) {
       store.commit("removeLoading")
     }
@@ -25,7 +25,7 @@ const api = async (method, url, data, header) => {
         header
       });
       store.commit("removeLoading")
-      return res.data;
+      return res;
     } catch(error) {
       store.commit("removeLoading")
     }
