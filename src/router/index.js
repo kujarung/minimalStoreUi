@@ -2,49 +2,29 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home'
 import Test from '@/views/test/test'
-import SignUp from '@/views/login/SignUp'
 
-import ProductList from '@/views/product/ProductList'
-import ProductDetail from '@/views/product/ProductDetail'
-import ProductReg from '@/views/product/ProductReg'
+import userRouter from '@/router/modules/user'
+import productRouter from '@/router/modules/product'
 
 Vue.use(VueRouter)
 
-  const routes = [
-    {
-      path: '/',
-      name: 'Home',
-      component: Home
-    },
-    {
-      path: '/example',
-      name: 'Test',
-      component: Test
-    },    
-    {
-      path: '/signUp',
-      name: 'signUp',
-      component: SignUp
-    },    
-    {
-      path : '/product',
-      component : ProductList,
-    },
-    {
-      path: '/product/detail/:productCode',
-      component: ProductDetail,
-      props : true
-    },            
-    {
-      path : '/product/reg',
-      component : ProductReg,
-    },
-  ]
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/example',
+    name: 'Test',
+    component: Test
+  },
+]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
+  routes: [...routes, ...userRouter, ...productRouter]
 })
 
 export default router
