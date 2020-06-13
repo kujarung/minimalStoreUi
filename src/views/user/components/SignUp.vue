@@ -28,6 +28,7 @@
           flat
           v-model="userObj.user_password"
           :rules="passwordRules"
+          type="password"
           placeholder="비밀번호"
           class="custom-input"
         ></v-text-field>
@@ -35,6 +36,7 @@
           solo
           flat
           v-model="checkPassword"
+          type="password"
           placeholder="비밀번호 확인"
           :rules="checkPasswordRules"
           class="custom-input"

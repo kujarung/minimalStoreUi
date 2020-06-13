@@ -11,15 +11,17 @@
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
       </v-btn>
-      <div class="mx20">Login</div>
+      <div class="mr20">
+        <router-link to="/about">About</router-link>
+      </div>
       <div class="mx20">
-        <router-link to="/product">상품 리스트</router-link>
+        <router-link to="/productList">상품 리스트</router-link>
+      </div>
+      <div class="mx20">
+        <router-link to="/user/login">Login</router-link>
       </div>
       <div class="mr20">
-        <router-link to="/about">about</router-link>
-      </div>      
-      <div class="mr20">
-        <router-link to="/signUp">Sign Up</router-link>
+        <router-link to="/user/signUp">Sign Up</router-link>
       </div>
       <v-avatar size="36">
           <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
