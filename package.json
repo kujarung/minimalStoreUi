@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --port 9000 --mode development",
-    "build": "vue-cli-service build --mode production"
+    "build": "vue-cli-service build --mode production --no-clean"
   },
   "dependencies": {
     "axios": "^0.19.2",

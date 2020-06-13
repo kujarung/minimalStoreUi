@@ -2,7 +2,7 @@ const common = {
   data() {
     return {
       // 파일 패스 잡는 부분
-      path : process.env.NODE_ENV === "development" ? "http://localhost:8080" : '/',
+      path : process.env.NODE_ENV === "development" ? "http://localhost:8080" : '',
     }
   },
   methods: {
