@@ -5,6 +5,7 @@ import Home from '@/views/Home'
 import Test from '@/views/test/test'
 import About from '@/views/about/About'
 import UserLayout from '@/views/user/UserLayout'
+import pageNotFound from '@/views/pageNotFound'
 
 import userRouter from '@/router/modules/user'
 import productRouter from '@/router/modules/product'
@@ -12,6 +13,11 @@ import productRouter from '@/router/modules/product'
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '*',
+    name: 'pageNotFound',
+    component: pageNotFound
+  },  
   {
     path: '/',
     name: 'Home',
