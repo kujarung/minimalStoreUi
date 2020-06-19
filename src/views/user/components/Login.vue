@@ -1,24 +1,28 @@
 <template>
-<div class="">
-  <form action="/api/auth/login" method="POST">
-      <input type="text" name="username" placeholder="username">
-      <input type="password" name="password" placeholder="password">
-      <button type="submit">submit</button>
-  </form>
-  <a :href="`${this.path}/api/oauth`">
-      <div class="kakaoLogin">
-          카카오 계정으로 로그인
-      </div>
-  </a>
-</div>
-
+  <templete>
+    <div>Lorem ipsum</div>
+    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">dfd</div>    
+  </templete>
 </template>
 
 <script>
-import common from "@/mixin"
-
 export default {
-  mixins : [common],
+  methods: {
+    onSignIn(googleUser) {
+      // Useful data for your client-side scripts:
+      var profile = googleUser.getBasicProfile();
+      console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+      console.log('Full Name: ' + profile.getName());
+      console.log('Given Name: ' + profile.getGivenName());
+      console.log('Family Name: ' + profile.getFamilyName());
+      console.log("Image URL: " + profile.getImageUrl());
+      console.log("Email: " + profile.getEmail());
+
+      // The ID token you need to pass to your backend:
+      var id_token = googleUser.getAuthResponse().id_token;
+      console.log("ID Token: " + id_token);
+    }
+  },
 }
 </script>
 
