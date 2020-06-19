@@ -7,6 +7,9 @@
         :on-success=onSuccessKakao
         :on-failure=onFailure
         />      
+        <div class="" @click="logoutKakao">
+          logoutKakao
+        </div>
     </div>
 </template>
 
@@ -49,6 +52,7 @@ export default {
       console.log("ID Token: " + id_token);
     },
     onSuccessKakao(data) {
+      console.log(data)
       Kakao.API.request({
         url: '/v2/user/me',
         success: function(res) {
@@ -66,6 +70,17 @@ export default {
       console.log(data)
       console.log("failure")    
     },
+    logoutKakao() {
+      Kakao.API.request({
+        url: '/v1/user/unlink',
+        success: function(response) {
+          console.log(response);
+        },
+        fail: function(error) {
+          console.log(error);
+        },
+      });      
+    }    
   }
 }
 
