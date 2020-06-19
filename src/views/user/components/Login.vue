@@ -52,7 +52,7 @@ export default {
       console.log("ID Token: " + id_token);
     },
     onSuccessKakao(data) {
-      console.log(data)
+      Kakao.Auth.setAccessToken(data.access_token);
       Kakao.API.request({
         url: '/v2/user/me',
         success: function(res) {
