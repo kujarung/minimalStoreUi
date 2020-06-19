@@ -1,14 +1,40 @@
 <template>
-  <templete>
-    <div>Lorem ipsum</div>
-    <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">dfd</div>    
-  </templete>
+    <div class="">
+      <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess"></GoogleLogin>
+      <KakaoLogin
+        api-key="8a038013f4764ac6f534e6ad557d1edf"
+        image="kakao_login_btn_large"
+        :on-success=onSuccessKakao
+        :on-failure=onFailure
+        />      
+    </div>
 </template>
 
 <script>
+import GoogleLogin from 'vue-google-login';
+import KakaoLogin from 'vue-kakao-login'
+
 export default {
+  components: {
+    GoogleLogin,
+    KakaoLogin
+  },
+  data() {
+    return {
+      // client_id is the only required property but you can add several more params, full list down bellow on the Auth api section
+      params: {
+        client_id: "506588159681-vhb9kn56i87gss76gr325ng115i2d0dk.apps.googleusercontent.com"
+      },
+      // only needed if you want to render the button with the google ui
+      renderParams: {
+        width: 250,
+        height: 50,
+        longtitle: true
+      }
+    }
+  },
   methods: {
-    onSignIn(googleUser) {
+    onSuccess(googleUser) {
       // Useful data for your client-side scripts:
       var profile = googleUser.getBasicProfile();
       console.log("ID: " + profile.getId()); // Don't send this directly to your server!
@@ -21,9 +47,28 @@ export default {
       // The ID token you need to pass to your backend:
       var id_token = googleUser.getAuthResponse().id_token;
       console.log("ID Token: " + id_token);
-    }
-  },
+    },
+    onSuccessKakao(data) {
+      Kakao.API.request({
+        url: '/v2/user/me',
+        success: function(res) {
+          console.log(res)
+        },
+        fail: function(error) {
+          alert(
+            'login success, but failed to request user information: ' +
+              JSON.stringify(error)
+          )
+        },
+      })      
+    },
+    onFailure(data) {
+      console.log(data)
+      console.log("failure")    
+    },
+  }
 }
+
 </script>
 
 <style>

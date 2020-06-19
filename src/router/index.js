@@ -5,6 +5,7 @@ import Home from '@/views/Home'
 import Test from '@/views/test/test'
 import About from '@/views/about/About'
 import UserLayout from '@/views/user/UserLayout'
+import Callback from '@/views/user/components/Callback'
 import pageNotFound from '@/views/pageNotFound'
 
 import userRouter from '@/router/modules/user'
@@ -37,6 +38,10 @@ const routes = [
     path: '/user',
     component: UserLayout,
     children: userRouter,
+  },
+  {
+    path: '/callback',
+    component: Callback,
   },
 ]
 
