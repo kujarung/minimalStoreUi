@@ -7,15 +7,30 @@
         :on-success=onSuccessKakao
         :on-failure=onFailure
         />      
-        <div class="" @click="logoutKakao">
-          logoutKakao
+      <div class="mb50" @click="logoutKakao">
+        logoutKakao
+      </div>
+      <div class="">
+        <div class="" style="border:1px solid black">
+          <input type="text" v-model="form.id">
         </div>
+        <div class="" style="border:1px solid black">
+          <input type="password" v-model="form.password">
+        </div>
+        <div class="">
+          <input type="submit" value="login" @click="login">
+        </div>
+        <div class="" @click="checkToken">
+          checkToken
+        </div>
+      </div>
     </div>
 </template>
 
 <script>
 import GoogleLogin from 'vue-google-login';
 import KakaoLogin from 'vue-kakao-login'
+import api from "@/api";
 
 export default {
   components: {
@@ -24,6 +39,11 @@ export default {
   },
   data() {
     return {
+      token : "",
+      form : {
+        id : "",
+        password : ""
+      },
       // client_id is the only required property but you can add several more params, full list down bellow on the Auth api section
       params: {
         client_id: "506588159681-vhb9kn56i87gss76gr325ng115i2d0dk.apps.googleusercontent.com"
@@ -80,7 +100,16 @@ export default {
           console.log(error);
         },
       });      
-    }    
+    },
+    async login() {
+      const {data} = await api('post','/login', this.form)
+      this.token = data.token
+    },    
+    async checkToken() {
+      console.log(this.token)
+      console.log()
+      const data = await api('get','/login/checkToken', {token : this.token})
+    }
   }
 }
 

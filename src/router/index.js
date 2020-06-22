@@ -5,11 +5,13 @@ import Home from '@/views/Home'
 import Test from '@/views/test/test'
 import About from '@/views/about/About'
 import UserLayout from '@/views/user/UserLayout'
-import Callback from '@/views/user/components/Callback'
+import Callback from '@/views/login/Callback'
+import Login from '@/views/login/Login'
+import Oauth from '@/views/login/Oauth'
 import pageNotFound from '@/views/pageNotFound'
-
 import userRouter from '@/router/modules/user'
 import productRouter from '@/router/modules/product'
+import checkToken from './checkToken'
 
 Vue.use(VueRouter)
 
@@ -43,6 +45,22 @@ const routes = [
     path: '/callback',
     component: Callback,
   },
+  {
+    path: '/login',
+    name: 'login',
+    component: Login
+  },
+  {
+    path: '/oauth',
+    name: 'oauth',
+    component: Oauth
+  },
+  {
+    path : '/mypage',
+    component: UserLayout,
+    children: userRouter,    
+    beforeEnter: checkToken,
+  }
 ]
 
 const router = new VueRouter({

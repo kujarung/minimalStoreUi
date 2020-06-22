@@ -15,10 +15,10 @@
         <router-link to="/about">About</router-link>
       </div>
       <div class="mx20">
-        <router-link to="/productList">상품 리스트</router-link>
+        <router-link to="/product/list">상품 리스트</router-link>
       </div>
       <div class="mx20">
-        <router-link to="/user/login">Login</router-link>
+        <router-link to="/login">Login</router-link>
       </div>
       <div class="mr20">
         <router-link to="/user/signUp">Sign Up</router-link>
