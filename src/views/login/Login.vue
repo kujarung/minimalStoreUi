@@ -23,6 +23,9 @@
         <div class="" @click="checkToken">
           checkToken
         </div>
+        <div class="" @click="currentToken">
+          currentToken
+        </div>
       </div>
     </div>
 </template>
@@ -106,9 +109,12 @@ export default {
       this.token = data.token
     },    
     async checkToken() {
-      console.log(this.token)
-      console.log()
       const data = await api('get','/login/checkToken', {token : this.token})
+      console.log(data)
+    },
+    async currentToken() {
+      const data = await api('post','/login/current', null , this.token)
+      console.log(data)
     }
   }
 }

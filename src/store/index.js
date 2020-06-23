@@ -63,11 +63,6 @@ export default new Vuex.Store({
       state.product.scrollY = posY
     }    
   },
-  modules: {
-    loading,
-    user,
-    product
-  },
   plugins: [
     // 쿠키 저장 설정
     createPersistedState({

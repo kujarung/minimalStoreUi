@@ -16,13 +16,15 @@ const api = async (method, url, data, header) => {
     } catch(error) {
       store.commit("removeLoading")
     }
+    store.commit("removeLoading")
   } else {
     try {
+      console.log(header)
+      axios.defaults.headers.common['Authorization'] = header
       const res = await axios({
         method,
         url: DOMAIN + url,
         data,
-        header
       });
       store.commit("removeLoading")
       return res;

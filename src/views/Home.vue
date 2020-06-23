@@ -48,7 +48,8 @@ export default {
   },
   data() {
     return {
-         lastPage : 0,
+      productObj : "",
+      lastPage : 0,
       productList : [],
       slides: [
         require("@/assets/images/back-img1.png"),
@@ -69,18 +70,16 @@ export default {
       ]
     };
   },
-  computed: {
-    productObj() {
-      return this.$store.getters.product;
-    }
-  },
   async created() {
+    this.productObj = this.$store.getters.product;
     if (this.productObj.currentPage !== 1) {
+      console.log("~!!")
       for (let i = 1; i < this.productObj.currentPage + 1; i++) {
         const {
           data: { data, lastPage }
         } = await api("get", "/product", { currentPage: i });
         this.productList.push(...data);
+        console.log(this.productList)
         this.lastPage = lastPage;
       }
       window.scrollTo({
