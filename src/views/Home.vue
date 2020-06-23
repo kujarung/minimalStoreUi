@@ -48,7 +48,6 @@ export default {
   },
   data() {
     return {
-      productObj : "",
       lastPage : 0,
       productList : [],
       slides: [
@@ -70,8 +69,12 @@ export default {
       ]
     };
   },
+  computed: {
+    productObj() {
+      return this.$store.getters.product;
+    }
+  },
   async created() {
-    this.productObj = this.$store.getters.product;
     if (this.productObj.currentPage !== 1) {
       console.log("~!!")
       for (let i = 1; i < this.productObj.currentPage + 1; i++) {

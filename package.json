@@ -21,6 +21,7 @@
     "vue-awesome-swiper": "^4.1.1",
     "vue-google-login": "^2.0.5",
     "vue-kakao-login": "^1.0.5",
+    "vue-naver-login": "^1.0.4",
     "vue-router": "^3.1.6",
     "vuetify": "^2.2.11",
     "vuex": "^3.1.3",
