@@ -184,7 +184,7 @@ export default {
       }
     },
     async selectAll() {
-      const data = await axios({
+      const data = await api({
         method: "get",
         url: "http://localhost:3000/signUp/selectAll"
       });

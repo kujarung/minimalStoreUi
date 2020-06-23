@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
 import Home from '@/views/Home'
 import Test from '@/views/test/test'
 import About from '@/views/about/About'
