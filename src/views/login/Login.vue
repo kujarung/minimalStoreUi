@@ -1,15 +1,6 @@
 <template>
     <div class="">
       <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess"></GoogleLogin>
-      <NaverLogin
-        client-id="Q5GVjnRr5N5xALRCiD8T"
-        callback-url="/callback"
-        v-bind:is-popup="true"
-        v-bind:button-type="3"
-        v-bind:button-height="50"
-        button-color="green"
-        :callbackFunction=callbackFunction
-      />      
       <KakaoLogin
         api-key="8a038013f4764ac6f534e6ad557d1edf"
         image="kakao_login_btn_large"
@@ -27,7 +18,7 @@
           <input type="password" v-model="form.password">
         </div>
         <div class="">
-          <input type="submit" value="login" @click="login">
+          <input type="submit" value="login" @click="login(null)">
         </div>
         <div class="" @click="checkToken">
           checkToken
@@ -71,22 +62,6 @@ export default {
     }
   },
   methods: {
-    callbackFunction(status) {
-        if (status) {
-        /* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
-        var email = naverLogin.user.getEmail();
-        if( email == undefined || email == null) {
-          alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
-          /* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
-          naverLogin.reprompt();
-          return;
-        }
-    
-        window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/sample/main.html");
-      } else {
-        console.log("callback 처리에 실패하였습니다.");
-      }
-    },
     onSuccess(googleUser) {
       // Useful data for your client-side scripts:
       var profile = googleUser.getBasicProfile();
@@ -102,13 +77,20 @@ export default {
       console.log("ID Token: " + id_token);
     },
     onSuccessKakao(data) {
+      const vue = this;
+      vue.$store.dispatch("addLoading")
       Kakao.Auth.setAccessToken(data.access_token);
       Kakao.API.request({
         url: '/v2/user/me',
-        success: function(res) {
-          console.log(res)
+        success:(res) => {
+          const loginData = {
+            id : res.id,
+            password : res.id
+          }
+          vue.$store.dispatch("removeLoading")
+          vue.login(loginData)
         },
-        fail: function(error) {
+        fail: (error) => {
           alert(
             'login success, but failed to request user information: ' +
               JSON.stringify(error)
@@ -131,9 +113,14 @@ export default {
         },
       });      
     },
-    async login() {
-      const {data} = await api('post','/login', this.form)
-      this.token = data.token
+    async login(loginData) {
+      const { data } = await api('post','/login', loginData ? loginData : this.form)
+      if(data.success) {
+        this.$store.commit("setuser", data.token)
+        this.$router.push("/")
+      } else {
+        alert("로그인 실패")
+      }
     },    
     async checkToken() {
       const data = await api('get','/login/checkToken', {token : this.token})

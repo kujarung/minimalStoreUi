@@ -17,21 +17,33 @@
       <div class="mx20">
         <router-link to="/product/list">상품 리스트</router-link>
       </div>
-      <div class="mx20">
-        <router-link to="/login">Login</router-link>
+      <div class="d-flex" v-if="userInfo.token.length == 0">
+        <div class="mx20">
+          <router-link to="/login">Login</router-link>
+        </div>
+        <div class="mr20">
+          <router-link to="/user/signUp">Sign Up</router-link>
+        </div>
       </div>
-      <div class="mr20">
-        <router-link to="/user/signUp">Sign Up</router-link>
-      </div>
-      <v-avatar size="36">
-          <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John" />
-        </v-avatar>
+      <template v-else>
+        <UserProfile :profileURL="profileURL"/>
+      </template>
     </v-app-bar>
   </div>
 </template>
 
 <script>
+import UserProfile from './UserProfile'
+
 export default {
+  components: {
+    UserProfile,
+  },
+  computed : {
+    userInfo() {
+      return this.$store.getters.user
+    }
+  },
   data: () => ({
     drawer: false
   })
