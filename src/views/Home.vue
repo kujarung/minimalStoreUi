@@ -8,7 +8,7 @@
       <div class="visual-txt-con">
         <div class="visual-txt mb24">
           하루에 한개,
-          <br />무엇이든 판매해보세요.
+          <br />무엇이든 판매해보세요!.
         </div>
         <div class="visual-reg-txt">
           <router-link to="/product/reg">상품 등록하기</router-link>
