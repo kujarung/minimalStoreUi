@@ -23,3 +23,13 @@ a{
     margin-bottom: 109px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
+
+.custom-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 96px;
+}
+
+.hover-underline:hover{
+    text-decoration: underline ;
+}

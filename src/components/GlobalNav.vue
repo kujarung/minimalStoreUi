@@ -1,22 +1,19 @@
 <template>
   <div>
     <v-app-bar color="white" elevation="0" class="px30">
-       <v-toolbar-title class="font-weight-bold font20 mont">
-        <router-link to="/">
-          Minimal Store
-        </router-link>
+      <v-toolbar-title class="font-weight-bold font20 mont">
+        <router-link to="/">Minimal Store</router-link>
       </v-toolbar-title>
-      <div class="ml32 mont mt6"> Store</div>
+      <router-link to="/product/list">
+        <div class="ml32 mont mt6 hover-underline">Store</div>
+      </router-link>
+      <router-link to="/about">
+        <div class="ml32 mont mt6 hover-underline">About</div>
+      </router-link>
       <v-spacer></v-spacer>
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-      <div class="mr20">
-        <router-link to="/about">About</router-link>
-      </div>
-      <div class="mx20">
-        <router-link to="/product/list">상품 리스트</router-link>
-      </div>
+      <v-sheet max-width="240" min-width="240">
+     <v-text-field class="custom-input"  placeholder="검색어를 입력해 주세요" append-icon="mdi-magnify" hide-details></v-text-field>
+     </v-sheet>
       <div class="d-flex" v-if="userInfo.token.length == 0">
         <div class="mx20">
           <router-link to="/login">Login</router-link>
@@ -26,22 +23,22 @@
         </div>
       </div>
       <template v-else>
-        <UserProfile :profileURL="profileURL"/>
+        <UserProfile :profileURL="profileURL" />
       </template>
     </v-app-bar>
   </div>
 </template>
 
 <script>
-import UserProfile from './UserProfile'
+import UserProfile from "./UserProfile";
 
 export default {
   components: {
-    UserProfile,
+    UserProfile
   },
-  computed : {
+  computed: {
     userInfo() {
-      return this.$store.getters.user
+      return this.$store.getters.user;
     }
   },
   data: () => ({

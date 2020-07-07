@@ -1,11 +1,12 @@
-.custom-container {
-    width: 1440px;
-    margin: 0 auto;
-    padding: 0 96px;
-}
+
 
 .product-detail {
-    padding-top:40px;
+    &.custom-container {
+        width: 1440px;
+        margin: 0 auto;
+        padding: 40px 96px;
+    }
+    
     .swiper-container {
         border-radius: 6px;
 

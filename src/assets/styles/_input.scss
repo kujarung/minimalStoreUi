@@ -17,16 +17,60 @@ input:-webkit-autofill:active {
 }
 
 // custom-input
-.v-input.custom-input.v-text-field{
-    .v-input__control{
-        .v-input__slot{
-            border-bottom:1px solid $border-grey;
+.v-input.custom-input.v-text-field {
+    .v-input__control {
+        .v-input__slot {
+            border-bottom: 1px solid $border-grey;
             border-radius: 0;
-            .v-text-field__slot{
-                input{
-                    border:0 !important;
-                    line-height:1;
+
+            .v-text-field__slot {
+                input {
+                    border: 0 !important;
+                    line-height: 1;
                 }
+            }
+        }
+    }
+}
+
+.custom-input.v-input.v-input--hide-details.theme--light.v-text-field.v-text-field--is-booted {
+    .v-input__control {
+        .v-input__slot {
+            border: 1px solid #999;
+            border-radius: 50px;
+            
+
+            &::before {
+                border: 0 !important;
+                display:none;
+            }
+            &::after{
+                border: 0 !important;
+                display:none;
+            }
+
+            .v-text-field__slot {
+                padding-left: 16px;
+                input {
+                    font-size:14px;
+                    line-height:1.5;
+                    margin-bottom: .5px;
+                }
+            }
+        }
+
+        .v-input__append-inner {
+            margin-right: 10px;
+        }
+    }
+
+    &.v-input--is-focused {
+        &.primary--text{
+
+        }
+        .v-input__control {
+            .v-input__slot {
+                
             }
         }
     }
