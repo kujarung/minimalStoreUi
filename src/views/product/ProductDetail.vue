@@ -33,14 +33,6 @@
         </v-col>
       </v-row>
     </div>
-    <!-- <div class>
-      <div class="title">{{detailData.product_name}}</div>
-      <div class="title">
-        <editor :editVal="detailData.product_desc" :editMode="`detail`" />
-      </div>
-      <div class="title">{{detailData.product_price}}</div>
-    </div>
-    <div class></div>-->
   </section>
 </template>
 
@@ -56,7 +48,6 @@ export default {
     editor,
     VisualSwiper
   },
-  mixins: [common],
   props: {
     productCode: String
   },
