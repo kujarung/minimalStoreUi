@@ -305,13 +305,14 @@
 
   .season-content {
     position: absolute;
-    top: calc(50% - 50px);
+    top: calc(50% - 60px);
     left: 220px;
 
     .main-title {
       font-size: 32px;
       font-weight: bold;
       color: #fff;
+      margin-bottom:10px;
     }
 
     .mini-desc {
@@ -319,6 +320,8 @@
       color: #523C27;
       line-height: 1.4 !important;
       font-weight:500;
+      position: relative;
+      top:4px;
     }
 
     .hilight-brown {

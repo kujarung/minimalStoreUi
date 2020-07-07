@@ -23,7 +23,7 @@
         <router-link to="/login">
           <div class="menu-list-item">Login</div>
         </router-link>
-        <router-link to="/login">
+        <router-link to="/user/signUp">
           <div class="menu-list-item">Sign Up</div>
         </router-link>
       </div>
