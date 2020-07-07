@@ -1,6 +1,7 @@
 .product-con {
   margin-right: -16px;
   margin-left: -16px;
+
   .inner-card {
     border-radius: 12px !important;
     margin-bottom: 32px;
@@ -9,34 +10,40 @@
     position: relative;
     cursor: pointer;
   }
+
   .product-star {
     cursor: pointer;
     position: absolute;
-    right : 16px;
+    right: 16px;
     top: 16px;
     z-index: 10;
     background-color: transparent;
   }
+
   .product-img-con {
     position: relative;
     background-color: transparent;
+
     .product-img {
       border-radius: 12px;
     }
+
     .product-desc-con {
       display: flex;
       position: absolute;
-      bottom : 20px;
-      left : 20px;
+      bottom: 20px;
+      left: 20px;
       height: 18px;
       background-color: transparent;
     }
   }
+
   .text-con {
     padding-bottom: 13px;
     padding-left: 16px;
     padding-right: 16px;
     background-color: transparent;
+
     .product-title {
       font-size: 16px;
       font-weight: bold;
@@ -45,6 +52,7 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+
     .product-desc {
       font-size: 12px;
       color: $border-grey;
@@ -53,6 +61,7 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+
     .product-price {
       font-size: 18px;
       font-weight: bold;
@@ -69,6 +78,7 @@
   align-items: center;
   padding: 4px 8px;
   margin-right: 6px;
+
   &.free-del {
     background-color: #FF5D39;
   }
@@ -84,29 +94,38 @@
   }
 }
 
-.v-tabs--grow > .v-tabs-bar .v-tab {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);;
+.v-tabs--grow>.v-tabs-bar .v-tab {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  ;
 }
 
-.swiper-button-next:after, .swiper-container-rtl .swiper-button-prev:after, .swiper-button-prev:after, .swiper-container-rtl .swiper-button-next:after {
+.swiper-button-next:after,
+.swiper-container-rtl .swiper-button-prev:after,
+.swiper-button-prev:after,
+.swiper-container-rtl .swiper-button-next:after {
   content: none !important;
 }
 
-.swiper-button-prev, .swiper-button-next {
+.swiper-button-prev,
+.swiper-button-next {
   width: 44px;
   outline: none;
 }
 
-.swiper-pagination-fraction, .swiper-pagination-custom, .swiper-container-horizontal > .swiper-pagination-bullets {
+.swiper-pagination-fraction,
+.swiper-pagination-custom,
+.swiper-container-horizontal>.swiper-pagination-bullets {
   text-align: right;
   padding-right: 45px;
   bottom: 30px;
+
   .swiper-pagination-bullet {
     width: 8px;
     height: 8px;
     border-radius: 0;
     background: rgba(0, 0, 0, 0.2);
   }
+
   .swiper-pagination-bullet-active {
     background: rgba(0, 0, 0, 0.6);
   }
@@ -122,14 +141,16 @@
   .visual-txt-con {
     z-index: 99;
     position: absolute;
-    top:50%;
+    top: 50%;
     left: 95px;
     transform: translate(0, -50%);
+
     .visual-txt {
       font-weight: bold;
       font-size: 68px;
       line-height: 83px;
     }
+
     .visual-reg-txt {
       cursor: pointer;
       display: inline-block;
@@ -142,10 +163,10 @@
 }
 
 .sub-con {
-	max-width: 1440px;
-	margin :0 auto;
-	padding-left: 96px;
-	padding-right: 96px;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-left: 96px;
+  padding-right: 96px;
 }
 
 .cate-wrap {
@@ -162,7 +183,7 @@
   background: #FFFFFF;
   box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.03);
   padding: 30px 100px;
-  width:700px;
+  width: 700px;
   justify-content: space-between;
 
   .cate-item {
@@ -170,20 +191,23 @@
     line-height: 24px;
     color: #000000;
     // margin-right: 94px;
-    display:flex;
+    display: flex;
     cursor: pointer;
-    border-bottom:3px solid #fff;
-    font-weight:medium;
+    border-bottom: 3px solid #fff;
+    font-weight: medium;
+
     &:last-child {
       margin-right: 0;
     }
+
     &.active {
       font-weight: bold;
     }
+
     &:hover {
       // transform: scale(1.05);
       // transition: 0.2s;
-      border-color:#000;
+      border-color: #000;
     }
   }
 }
@@ -191,7 +215,7 @@
 
 .custom__editor__content {
   &.edit {
-    .ProseMirror { 
+    .ProseMirror {
       border: 1px solid #CFCFCF;
       background-color: #fff;
     }
@@ -203,20 +227,23 @@
     box-sizing: border-box;
     border-radius: 20px;
     min-height: 200px;
-    padding:20px;
+    padding: 20px;
     width: 100%;
     outline: none;
-    resize: none;;
+    resize: none;
+    ;
     font-style: normal;
     font-weight: 500;
     font-size: 16px;
     line-height: 20px;
-    caret-color: #222222;    
+    caret-color: #222222;
     outline: none;
     min-height: 400px;
   }
+
   .menubar {
-    line-height: 10px;;
+    line-height: 10px;
+    ;
   }
 }
 
@@ -229,22 +256,28 @@
       background-position: bottom !important;
     }
   }
-	.sub-con {
-		padding-left: 20px;
-		padding-right: 20px;
+
+  .sub-con {
+    padding-left: 20px;
+    padding-right: 20px;
   }
+
   .visual-con .visual-txt-con {
     left: 50px;
+
     .visual-txt {
       font-size: 28px;
       line-height: 33px;
     }
   }
+
   .cate-wrap {
     bottom: -20px;
+
     .cate-con {
       bottom: 50px;
       padding: 5px 10px;
+
       .cate-item {
         font-size: 12px;
         line-height: 24px;
@@ -254,8 +287,41 @@
     }
   }
 
-  .swiper-button-prev, .swiper-button-next {
+  .swiper-button-prev,
+  .swiper-button-next {
     width: 24px;
   }
-  
+
+}
+
+.season-image-wrap {
+  position: relative;
+  margin-bottom:30px !important;
+
+  .season-image {
+    border-radius: 6px;
+  }
+
+  .season-content {
+    position: absolute;
+    top: calc(50% - 50px);
+    left: 220px;
+
+    .main-title {
+      font-size: 32px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    .mini-desc {
+      font-size: 14px;
+      color: #523C27;
+      line-height: 1.4 !important;
+      font-weight:500;
+    }
+
+    .hilight-brown {
+      color: #523C27;
+    }
+  }
 }
