@@ -4,14 +4,8 @@
       <v-row no-gutters>
         <v-col cols="12" md="6" class="left-area">
           <VisualSwiper
-            v-if="detailData.ATTACH_IMGs.length > 1"
+            v-if="detailData.ATTACH_IMGs.length >= 1"
             :slides="detailData.ATTACH_IMGs.map(val => this.path + val.file_path)"
-          />
-          <v-img
-            v-else
-            v-for="(img, index) in detailData.ATTACH_IMGs"
-            :key="index"
-            :src="path + img.file_path"
           />
         </v-col>
         <v-col cols="12" md="6" class="right-area">
@@ -57,6 +51,7 @@ export default {
     console.log("detailData", JSON.stringify(this.detailData, null, 2));
     this.renderOk = true;
   },
+
   data() {
     return {
       renderOk: false,
