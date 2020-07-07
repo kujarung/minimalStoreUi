@@ -37,7 +37,7 @@ $max: 180;
 $max-font: 100;
 @mixin font-classes{
   @for $i from 10 through $max-font{
-      $value: $i * 0.1rem !important;
+      $value: $i * 1px !important;
       .font#{$i} {font-size: $value;}
   }
 }

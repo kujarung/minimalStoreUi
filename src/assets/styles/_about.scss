@@ -1,194 +1,248 @@
-.about-txt-con {
-  padding-top: 70px;
-  position: relative;
-  z-index: 10;
-  .minial-txt {
+.about-wrap {
+
+  .image-container{
     position: relative;
-    left: -114px;
-    font-weight: 900;
-    font-size: 240px;
-    line-height: 244px;
-    margin-bottom: 90px;
-    font-family: 'Montserrat';
-  }
-  .minimal-img {
-
-  }
-}
-
-.about-img-con {
-  z-index: -1;
-  margin-top: -120px;
-  padding-left: 60px;
-  padding-right: 60px;
-  margin-bottom: 200px;
-  .left-con {
-    margin-top: 150px;
-    margin-right: 50px;
-    .left-img {
-      overflow: visible;
-      z-index: 1;
-      position: relative;
-      &:after {
-        content : "SIMPLE LIFE";
-        position: absolute;
-        font-weight: bold;
-        bottom: -50px;
-        font-size: 80px;
-        line-height: 98px;
-      }
-    }
-  }
-
-  .right-con {
-    margin-left: 50px;
-    .right-img-con {
-      .right-img {
-        overflow: visible;
-        z-index: 1;
-        position: relative;
-        &:after {
-          content : "FREE DONATE";
-          position: absolute;
-          font-weight: bold;
-          bottom: -50px;
-          font-size: 80px;
-          line-height: 98px;
-          padding-left: 70px;
-        }
-      }
-    }
-    .desc-title {
-      margin-top: -50px;
-    }
-    .center-line {
-      height: 220px;;
-      margin-bottom: 70px;
-      margin-top: 70px;
+    .main-title{
+      position: absolute;
+      top:220px;
+      font-family: 'Montserrat';
       text-align: center;
-      .line {
-        height: 100%;
-        display: inline-block;
-        border-left: 1px solid black;
-      }
+      width:100%;
+      font-size:52px;
+      font-weight:400;
+      color:#fff;
     }
-    .desc-content {
-      text-align: center;
-      font-weight: 300;
-      font-size: 30px;
-      line-height: 44px;
-      .inner-txt {
-        display: inline-block;
-        text-align: left;
-      }
+    .vertical-line{
+      width:1px;
+      height:130px;
+      background-color:#fff;
+      position: absolute;
+      left:50%;
+      bottom:78px;
+      
+
     }
   }
-}
-
-.about-back-con {
-  background: #FBF7F2;
-  padding: 70px 0px;
-  margin-bottom: 200px;
-  text-align: center;
-  .inner-text {
-    font-size: 30px;
-    line-height: 44px;
-  }
-}
-
-
-
-// 모바일
-@media (max-width: 769px) {
   .about-txt-con {
-    .minial-txt {
-      left: -30px;
-      font-size: 50px;
-      line-height: 58px;
-      margin-bottom: 30px;
-    }
-    .minimal-img {
+    position: relative;
+    z-index: 10;
 
+    .minial-txt {
+      position: relative;
+      font-weight: 900;
+      font-size: 160px;
+      line-height: 244px;
+      margin-bottom: 10px;
+      font-family: 'Montserrat';
     }
+    .minimal-subtxt{
+      font-weight:bold;
+      font-size:30px;
+      margin-bottom:30px;
+    }
+    .minimal-img {}
   }
 
   .about-img-con {
     z-index: -1;
     margin-top: -120px;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-bottom: 50px;
+    padding-left: 60px;
+    padding-right: 60px;
+    margin-bottom: 200px;
+
     .left-con {
       margin-top: 150px;
-      margin-right: 0px;
-      margin-bottom: 90px;
+      margin-right: 50px;
+
       .left-img {
         overflow: visible;
         z-index: 1;
         position: relative;
+
         &:after {
-          content : "SIMPLE LIFE";
-          width: 100%;
-          bottom: -20px;
-          font-size: 30px;
-          line-height: 36px;
-          text-align: center;
+          content: "SIMPLE LIFE";
+          position: absolute;
+          font-weight: bold;
+          bottom: -50px;
+          font-size: 80px;
+          line-height: 98px;
+          font-family: 'Montserrat';
         }
       }
     }
-  
+
     .right-con {
-      margin-left: 0px;
+      margin-left: 50px;
+
       .right-img-con {
         .right-img {
+          overflow: visible;
+          z-index: 1;
+          position: relative;
+
           &:after {
-            content : "FREE DONATE";
-            width: 100%;
-            bottom: -20px;
-            font-size: 30px;
-            line-height: 36px;
-            padding-left: 0;
-            text-align: center;
+            content: "FREE DONATE";
+            position: absolute;
+            font-weight: bold;
+            bottom: -50px;
+            font-size: 80px;
+            line-height: 98px;
+            padding-left: 70px;
+            font-family: 'Montserrat';
           }
         }
       }
+
       .desc-title {
-        margin-top: -0px;
+        margin-top: -50px;
       }
+
       .center-line {
-        height: 120px;;
-        margin-bottom: 20px;
-        margin-top: 20px;
+        height: 220px;
+        ;
+        margin-bottom: 70px;
+        margin-top: 70px;
         text-align: center;
+
         .line {
           height: 100%;
           display: inline-block;
           border-left: 1px solid black;
         }
       }
+
       .desc-content {
         text-align: center;
-        font-size: 15px;
-        line-height: 24px;
-        .inner-txt { 
-          padding-left: 20px;
-          padding-right: 20px;
-          text-align: center;
+        font-weight: 300;
+        font-size: 30px;
+        line-height: 44px;
+
+        .inner-txt {
+          display: inline-block;
+          text-align: left;
         }
       }
     }
   }
+
   .about-back-con {
-    padding-left: 20px;
-    padding-right: 20px;
-    margin-bottom: 50px;
+    background: #FBF7F2;
+    padding: 70px 0px;
+    margin-bottom: 200px;
+    text-align: center;
+
     .inner-text {
-      font-size: 20px;
-      line-height: 32px;
+      font-size: 30px;
+      line-height: 44px;
     }
   }
 
-  .hidden-md {
-    display: none;
+
+
+  // 모바일
+  @media (max-width: 769px) {
+    .about-txt-con {
+      .minial-txt {
+        left: -30px;
+        font-size: 50px;
+        line-height: 58px;
+        margin-bottom: 30px;
+      }
+
+      .minimal-img {}
+    }
+
+    .about-img-con {
+      z-index: -1;
+      margin-top: -120px;
+      padding-left: 0px;
+      padding-right: 0px;
+      margin-bottom: 50px;
+
+      .left-con {
+        margin-top: 150px;
+        margin-right: 0px;
+        margin-bottom: 90px;
+
+        .left-img {
+          overflow: visible;
+          z-index: 1;
+          position: relative;
+
+          &:after {
+            content: "SIMPLE LIFE";
+            width: 100%;
+            bottom: -20px;
+            font-size: 30px;
+            line-height: 36px;
+            text-align: center;
+          }
+        }
+      }
+
+      .right-con {
+        margin-left: 0px;
+
+        .right-img-con {
+          .right-img {
+            &:after {
+              content: "FREE DONATE";
+              width: 100%;
+              bottom: -20px;
+              font-size: 30px;
+              line-height: 36px;
+              padding-left: 0;
+              text-align: center;
+            }
+          }
+        }
+
+        .desc-title {
+          margin-top: -0px;
+        }
+
+        .center-line {
+          height: 120px;
+          ;
+          margin-bottom: 20px;
+          margin-top: 20px;
+          text-align: center;
+
+          .line {
+            height: 100%;
+            display: inline-block;
+            border-left: 1px solid black;
+          }
+        }
+
+        .desc-content {
+          text-align: center;
+          font-size: 15px;
+          line-height: 24px;
+
+          .inner-txt {
+            padding-left: 20px;
+            padding-right: 20px;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    .about-back-con {
+      padding-left: 20px;
+      padding-right: 20px;
+      margin-bottom: 50px;
+
+      .inner-text {
+        font-size: 20px;
+        line-height: 32px;
+      }
+    }
+
+    .hidden-md {
+      display: none;
+    }
   }
+
 }
