@@ -9,13 +9,13 @@
 @import '_productDetail';
 @import '_about';
 
-html .v-application{
+html .v-application {
     font-family: 'NotoSansKR', sans-serif;
 }
 
-a{
+a {
     text-decoration: none;
-    color:#333 !important;  
+    color: #333 !important;
 }
 
 .sub-main {
@@ -30,6 +30,13 @@ a{
     padding: 0 96px;
 }
 
-.hover-underline:hover{
-    text-decoration: underline ;
+// gnb
+.menu-list-item {
+    margin-left: 20px;
+    font-family: 'Montserrat';
+    margin-top: 3px;
+
+    &:hover {
+        text-decoration: underline;
+    }
 }
